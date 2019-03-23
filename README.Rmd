@@ -1,0 +1,13 @@
+---
+title: "ggplot2 Extention for Fun"
+author: "Yawei Ge, Zhenzhen Chen, Weiquan Luo"
+date: "3/22/2019"
+output: rmarkdown::github_document
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
