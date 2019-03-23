@@ -1,7 +1,7 @@
 #' To Draw a Line from the central to the farest point
 #'
 #' Given a points set in data.frame, extends ggplot2 functionality to
-#' draw a line from the central to the farest point
+#' draw a line from the central to the farthest point
 #'
 #' @param na.rm If `FALSE`, the default, missing values are removed with
 #'   a warning. If `TRUE`, missing values are silently removed.
