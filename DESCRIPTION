@@ -1,11 +1,16 @@
 Package: ggfun
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Title: Apply ggplot2 and extend some parts of it
+Version: 0.0.9999
+Author: Yawei Ge, Zhenzhen Chen, Weiquan Luo
+Maintainer: Yawei Ge <yaweige@iastate.edu>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Imports: 
+  ggplot2,
+  dplyr
+Depends: R (>= 3.5.1)
+RoxygenNote: 6.1.1
