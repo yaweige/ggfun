@@ -1,7 +1,7 @@
-#' To Draw Arrow Map of US Election
+#' (This function is not ready to use)To Draw Arrow Map of US Election
 #'
 #' Given a data set with the lat, long, group information to draw a US map and
-#' change of party of preference of each region, it draw an arrows for you.
+#' change of party preference of each region, it draw an arrows for you.
 #'
 #' @param na.rm If `FALSE`, the default, missing values are removed with
 #'   a warning. If `TRUE`, missing values are silently removed.
@@ -12,12 +12,6 @@
 #' @export
 #' @importFrom  ggplot2 layer
 #' @examples
-#' madedata <- data.frame(x = rnorm(100, mean = 0, sd = 1),
-#' y = rnorm(100, mean = 0, sd = 1))
-#' ggplot(madedata, aes(x = x, y = y)) +
-#' geom_point() +
-#' stat_star(color = "red")
-#'
 #'
 
 # is there a geom = "curve"? Yes
