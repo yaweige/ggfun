@@ -6,9 +6,9 @@ Yawei Ge, Zhenzhen Chen, Weiquan Luo
 Functions
 =========
 
-elephant and donkey
-
 ### `geom_image`
+
+Elephant and donkey
 
 ``` r
 library(ggplot2)

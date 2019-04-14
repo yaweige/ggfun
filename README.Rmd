@@ -12,9 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # Functions
-elephant and donkey
 
 ### `geom_image`
+
+Elephant and donkey
+
 ```{r, warning=FALSE, message=FALSE}
 library(ggplot2)
 library(ggfun)
