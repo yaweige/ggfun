@@ -27,7 +27,7 @@ stat_arrowmap <- function(mapping = NULL, data = NULL, geom = "curve",
 
 #' @format NULL
 #' @usage NULL
-#' @import ggplot2 ggproto
+#' @importFrom ggplot2 ggproto
 #' @export
 #'
 

@@ -29,7 +29,7 @@ stat_rl <- function(mapping = NULL, data = NULL, geom = "line",
 
 #' @format NULL
 #' @usage NULL
-#' @import ggplot2 ggproto
+#' @importFrom ggplot2 ggproto
 #' @export
 #'
 
