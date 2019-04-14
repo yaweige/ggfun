@@ -6,11 +6,14 @@ Yawei Ge, Zhenzhen Chen, Weiquan Luo
 Functions
 =========
 
+elephant and donkey
+
 ### `geom_image`
 
 ``` r
 library(ggplot2)
 library(ggfun)
+library(dplyr)
 
 ggplot(mtcars, aes(wt, mpg)) + geom_image()
 ```
@@ -32,3 +35,16 @@ ggplot(madedata, aes(x = x, y = y)) +
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+
+### `stat_arrowmap`
+
+Forgive me for this
+
+``` r
+madedata_standard %>%
+  ggplot() +
+  geom_path(aes(x = long, y = lat, group = group)) +
+  stat_arrowmap(aes(x = long, y = lat, change = change, group = region))
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)

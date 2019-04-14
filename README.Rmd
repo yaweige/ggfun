@@ -12,10 +12,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 # Functions
+elephant and donkey
+
 ### `geom_image`
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(ggplot2)
 library(ggfun)
+library(dplyr)
 
 ggplot(mtcars, aes(wt, mpg)) + geom_image()
 ```
@@ -32,4 +35,24 @@ madedata <- data.frame(x = rnorm(100, mean = 0, sd = 1),
 ggplot(madedata, aes(x = x, y = y)) +
   geom_point() +
   stat_star(color = "red")
+```
+
+### `stat_arrowmap`
+
+Forgive me for this
+
+```{r, include=FALSE}
+usmap <- map_data("state")
+madedata_standard <- data.frame(region = unique(usmap$region), change = (runif(49)-0.5)*2,
+                                stringsAsFactors = F)
+madedata_standard <- madedata_standard %>%
+  left_join(usmap,by = "region")
+```
+
+```{r}
+madedata_standard %>%
+  ggplot() +
+  geom_path(aes(x = long, y = lat, group = group)) +
+  stat_arrowmap(aes(x = long, y = lat, change = change, group = region))
+
 ```
