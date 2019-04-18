@@ -10,10 +10,9 @@
 #' @export
 #' @importFrom  ggplot2 layer
 #' @examples
-#' t <- seq(from = 0, to = 1, length = 300)
 #'
 #' ggplot() +
-#'   stat_ars(aes(r = sqrt(t), theta = 2 * pi * t), col = "yellow")
+#'   stat_ars(aes(a = 10, b = 20), col = "blue")
 
 stat_ars <- function(mapping = NULL, data = NULL, geom = "point",
                      position = "identity", na.rm = FALSE, show.legend = NA,
@@ -31,12 +30,16 @@ stat_ars <- function(mapping = NULL, data = NULL, geom = "point",
 #' @export
 
 StatArs <- ggproto("StatArs", Stat,
+
                    compute_group = function(data, scales) {
 
-                     x <- data$r * sin(data$theta)
-                     y <- data$r * cos(data$theta)
+                     theta <- seq(0, 2*pi, length = 1000)
+                     r <- data$a + data$b * theta
+                     x <- r * sin(theta)
+                     y <- r * cos(theta)
 
                      data.frame(x = x, y = y)
                    },
-                   required_aes = c("r", "theta")
+                   required_aes = c("a", "b")
 )
+
