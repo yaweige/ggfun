@@ -13,7 +13,7 @@
 #' t <- seq(from = 0, to = 1, length = 300)
 #'
 #' ggplot() +
-#'   stat_ars(aes(r = sqrt(t), theta = 2 * pi * t), col = "blue")
+#'   stat_ars(aes(r = sqrt(t), theta = 2 * pi * t), col = "yellow")
 
 stat_ars <- function(mapping = NULL, data = NULL, geom = "point",
                      position = "identity", na.rm = FALSE, show.legend = NA,
