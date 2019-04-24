@@ -65,6 +65,9 @@ draw a line from location to location with defined criterion of distance in km.
 }
 \examples{
 # This example show the earthquake data with in Pacific Plate
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
 # plot base map
 worldmap <- map_data("world2")
 p <- ggplot() +
@@ -88,7 +91,7 @@ eq <- read.delim(url, as.is=T) \%>\%
   filter(LONGITUDE > 110 | LONGITUDE < -45) \%>\%  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) \%>\%
   select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
 
-# run,
+# add layer_PersHomo
 fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450000, colour = "blue") +
   geom_point(); fp
 
