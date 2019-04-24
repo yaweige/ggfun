@@ -68,8 +68,8 @@
 #'         panel.grid.major=element_blank(),
 #'         panel.grid.minor=element_blank(),
 #'         plot.background=element_blank()); p
-#' url <- "https://www.ngdc.noaa.gov/nndc/struts/results?type_0=Exact&query_0=$ID&t=101650&s=13&d=189&dfn=signif.txt"
-#' eq <- read.delim(url, as.is=T) %>%
+#' f <- system.file("extdata", "eqData.txt", package = "ggfun")
+#' eq <- read.delim(f, as.is=T) %>%
 #'   filter(!is.na(LONGITUDE) & !is.na(LATITUDE)) %>%
 #'   filter(LONGITUDE > 110 | LONGITUDE < -45) %>%  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) %>%
 #'   select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
