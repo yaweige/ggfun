@@ -2,11 +2,7 @@
 % Please edit documentation in R/layer_PersHomo.R
 \name{layer_PersHomo}
 \alias{layer_PersHomo}
-\title{To Draw line segments between locations on map by distance. The concept is inhered from persist homology.
-The linkage in resulting figures can be used to recognize patterns or cluster of points.
-Compare to ggplot2 package, plotly package might be better for this functionality because the linkage
-can be shown on the globe instead of a flat figure. To the purpose of the package, this layer
-attempt to show the capability of ggplot on a small scale data instead of global data.}
+\title{To draw line segments between locations on map by distance.}
 \usage{
 layer_PersHomo(mapping = NULL, data = NULL, geom = "segment",
   d = NULL, position = "identity", na.rm = FALSE, show.legend = NA,
@@ -61,14 +57,18 @@ layer, as a string.}
 }
 \description{
 Given a points set as Geographic locations in a data.frame, extends ggplot2 functionality to
-draw a line from location to location with defined criterion of distance in km.
+draw a line from location to location with defined criterion of distance in km. The concept is inhered from persist homology.
+The linkage in resulting figures can be used to recognize patterns or cluster of points.
+Compare to ggplot2 package, plotly package might be better for this functionality because the linkage
+can be shown on the globe instead of a flat figure. To the purpose of the package, this layer
+attempt to show the capability of ggplot on a small scale data instead of global data.
 }
 \examples{
 # This example show the earthquake data with in Pacific Plate
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
-# plot base map
+## plot base map
 worldmap <- map_data("world2")
 p <- ggplot() +
   geom_polygon(data=worldmap, aes(x=long, y=lat, group = group),fill="white", colour="#7f7f7f", size=0.5) +
@@ -84,14 +84,12 @@ p <- ggplot() +
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         plot.background=element_blank()); p
-
 url <- "https://www.ngdc.noaa.gov/nndc/struts/results?type_0=Exact&query_0=$ID&t=101650&s=13&d=189&dfn=signif.txt"
 eq <- read.delim(url, as.is=T) \%>\%
   filter(!is.na(LONGITUDE) & !is.na(LATITUDE)) \%>\%
   filter(LONGITUDE > 110 | LONGITUDE < -45) \%>\%  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) \%>\%
   select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
-
-# add layer_PersHomo
+## add layer_PersHomo
 fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450000, colour = "blue") +
   geom_point(); fp
 
