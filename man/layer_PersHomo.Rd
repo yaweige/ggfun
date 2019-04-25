@@ -64,7 +64,7 @@ attempt to show the capability of ggplot on a small scale data instead of global
 }
 \examples{
 # This example show the earthquake data with in Pacific Plate
-library(tidyverse)
+library(magrittr)
 library(ggplot2)
 library(dplyr)
 ## plot base map
