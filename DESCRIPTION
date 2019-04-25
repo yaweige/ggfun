@@ -16,5 +16,8 @@ Imports:
     grid,
     utils,
     geosphere
-Depends: R (>= 3.5.1)
+Suggests:
+    maps,
+    tidyverse
+Depends: R (>= 3.5.0)
 RoxygenNote: 6.1.1

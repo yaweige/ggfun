@@ -51,8 +51,9 @@ geom_image <- function(mapping = NULL, data = NULL, stat = "identity",
                        ...) {
   layer(data = data, mapping = mapping, stat = stat, geom = GeomImage,
         position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-        params = list(na.rm = na.rm, img = img, ...))
+        params = list(na.rm = na.rm, ...))
 }
+
 
 
 #' @format NULL

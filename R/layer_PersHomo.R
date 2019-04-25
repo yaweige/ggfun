@@ -25,8 +25,7 @@
 #'    A `function` will be called with a single argument,
 #'    the plot data. The return value must be a `data.frame`, and
 #'    will be used as the layer data.
-#' @param stat The statistical transformation to use on the data for this
-#'    layer, as a string.
+#' @param geom The geometric object to use display the data
 #' @param position Position adjustment, either as a string, or the result of
 #'    a call to a position adjustment function.
 #' @param na.rm If `FALSE`, the default, missing values are removed with
@@ -55,7 +54,9 @@
 #' ## plot base map
 #' worldmap <- map_data("world2")
 #' p <- ggplot() +
-#'   geom_polygon(data=worldmap, aes(x=long, y=lat, group = group),fill="white", colour="#7f7f7f", size=0.5) +
+#'   geom_polygon(data=worldmap,
+#'   aes(x=long, y=lat, group = group),
+#'   fill="white", colour="#7f7f7f", size=0.5) +
 #'   theme(axis.line=element_blank(),
 #'         axis.text.x=element_blank(),
 #'         axis.text.y=element_blank(),
@@ -69,12 +70,15 @@
 #'         panel.grid.minor=element_blank(),
 #'         plot.background=element_blank()); p
 #' f <- system.file("extdata", "eqData.txt", package = "ggfun")
-#' eq <- read.delim(f, as.is=T) %>%
+#' eq <- read.delim(f, as.is=TRUE) %>%
 #'   filter(!is.na(LONGITUDE) & !is.na(LATITUDE)) %>%
-#'   filter(LONGITUDE > 110 | LONGITUDE < -45) %>%  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) %>%
+#'   filter(LONGITUDE > 110 | LONGITUDE < -45) %>%
+#'   mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) %>%
 #'   select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
 #' ## add layer_PersHomo
-#' fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450000, colour = "blue") +
+#' fp <- p + layer_PersHomo(data= eq,
+#' mapping = aes(x=LONGITUDE, y=LATITUDE),
+#' d=450000, colour = "blue") +
 #'   geom_point(); fp
 #'
 #'
@@ -92,7 +96,6 @@ layer_PersHomo <- function(mapping = NULL, data = NULL, geom = "segment", d = NU
 #' @format NULL
 #' @usage NULL
 #' @importFrom ggplot2 ggproto
-#' @export
 #'
 
 layerPersHomo <- ggproto("persHomo", Stat,

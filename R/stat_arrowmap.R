@@ -20,8 +20,7 @@
 #'    A `function` will be called with a single argument,
 #'    the plot data. The return value must be a `data.frame`, and
 #'    will be used as the layer data.
-#' @param stat The statistical transformation to use on the data for this
-#'    layer, as a string.
+#' @param geom The geometric object to use display the data
 #' @param position Position adjustment, either as a string, or the result of
 #'    a call to a position adjustment function.
 #' @param na.rm If `FALSE`, the default, missing values are removed with
@@ -43,9 +42,10 @@
 #' @importFrom  ggplot2 layer
 #' @examples
 #' library(ggplot2)
+#' library(maps)
 #' usmap <- map_data("state")
 #' madedata_standard <- data.frame(region = unique(usmap$region), change = (runif(49)-0.5)*2,
-#' stringsAsFactors = F)
+#' stringsAsFactors = FALSE)
 #'
 #' madedata_standard <- dplyr::left_join(madedata_standard, usmap,by = "region")
 #' ggplot(data = madedata_standard) +
@@ -67,7 +67,6 @@ stat_arrowmap <- function(mapping = NULL, data = NULL, geom = "curve",
 #' @format NULL
 #' @usage NULL
 #' @importFrom ggplot2 ggproto
-#' @export
 #'
 
 StatArrowmap <- ggproto("StatArrowmap", Stat,

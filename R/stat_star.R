@@ -20,8 +20,7 @@
 #'    A `function` will be called with a single argument,
 #'    the plot data. The return value must be a `data.frame`, and
 #'    will be used as the layer data.
-#' @param stat The statistical transformation to use on the data for this
-#'    layer, as a string.
+#' @param geom The geometric object to use display the data
 #' @param position Position adjustment, either as a string, or the result of
 #'    a call to a position adjustment function.
 #' @param na.rm If `FALSE`, the default, missing values are removed with
@@ -42,6 +41,7 @@
 #' @export
 #' @importFrom  ggplot2 layer
 #' @examples
+#' library(ggplot2)
 #' madedata <- data.frame(x = rnorm(100, mean = 0, sd = 1),
 #' y = rnorm(100, mean = 0, sd = 1))
 #' ggplot(madedata, aes(x = x, y = y)) +
@@ -63,7 +63,6 @@ stat_star <- function(mapping = NULL, data = NULL, geom = "line",
 #' @format NULL
 #' @usage NULL
 #' @importFrom ggplot2 ggproto
-#' @export
 #'
 
 StatStar <- ggplot2::ggproto("StatStar", Stat,

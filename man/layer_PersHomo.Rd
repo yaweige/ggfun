@@ -28,6 +28,8 @@ plot. You must supply `mapping` if there is no plot mapping.}
    the plot data. The return value must be a `data.frame`, and
    will be used as the layer data.}
 
+\item{geom}{The geometric object to use display the data}
+
 \item{d}{the magnitude of real Geo distance (in km) used as the criterion to link two locations}
 
 \item{position}{Position adjustment, either as a string, or the result of
@@ -51,9 +53,6 @@ the default plot specification, e.g. [borders()].}
 often aesthetics, used to set an aesthetic to a fixed value, like
 `colour = "red"` or `size = 3`. They may also be parameters
 to the paired geom/stat.}
-
-\item{stat}{The statistical transformation to use on the data for this
-layer, as a string.}
 }
 \description{
 Given a points set as Geographic locations in a data.frame, extends ggplot2 functionality to
@@ -71,7 +70,9 @@ library(dplyr)
 ## plot base map
 worldmap <- map_data("world2")
 p <- ggplot() +
-  geom_polygon(data=worldmap, aes(x=long, y=lat, group = group),fill="white", colour="#7f7f7f", size=0.5) +
+  geom_polygon(data=worldmap,
+  aes(x=long, y=lat, group = group),
+  fill="white", colour="#7f7f7f", size=0.5) +
   theme(axis.line=element_blank(),
         axis.text.x=element_blank(),
         axis.text.y=element_blank(),
@@ -85,12 +86,15 @@ p <- ggplot() +
         panel.grid.minor=element_blank(),
         plot.background=element_blank()); p
 f <- system.file("extdata", "eqData.txt", package = "ggfun")
-eq <- read.delim(f, as.is=T) \%>\%
+eq <- read.delim(f, as.is=TRUE) \%>\%
   filter(!is.na(LONGITUDE) & !is.na(LATITUDE)) \%>\%
-  filter(LONGITUDE > 110 | LONGITUDE < -45) \%>\%  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) \%>\%
+  filter(LONGITUDE > 110 | LONGITUDE < -45) \%>\%
+  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) \%>\%
   select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
 ## add layer_PersHomo
-fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450000, colour = "blue") +
+fp <- p + layer_PersHomo(data= eq,
+mapping = aes(x=LONGITUDE, y=LATITUDE),
+d=450000, colour = "blue") +
   geom_point(); fp
 
 

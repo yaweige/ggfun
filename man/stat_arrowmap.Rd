@@ -28,6 +28,8 @@ plot. You must supply `mapping` if there is no plot mapping.}
    the plot data. The return value must be a `data.frame`, and
    will be used as the layer data.}
 
+\item{geom}{The geometric object to use display the data}
+
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
@@ -49,9 +51,6 @@ the default plot specification, e.g. [borders()].}
 often aesthetics, used to set an aesthetic to a fixed value, like
 `colour = "red"` or `size = 3`. They may also be parameters
 to the paired geom/stat.}
-
-\item{stat}{The statistical transformation to use on the data for this
-layer, as a string.}
 }
 \description{
 Given a data set with the lat, long, group information to draw a US map and
@@ -59,9 +58,10 @@ change of party preference of each region, it draw an arrows for you.
 }
 \examples{
 library(ggplot2)
+library(maps)
 usmap <- map_data("state")
 madedata_standard <- data.frame(region = unique(usmap$region), change = (runif(49)-0.5)*2,
-stringsAsFactors = F)
+stringsAsFactors = FALSE)
 
 madedata_standard <- dplyr::left_join(madedata_standard, usmap,by = "region")
 ggplot(data = madedata_standard) +

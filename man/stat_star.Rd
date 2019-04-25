@@ -28,6 +28,8 @@ plot. You must supply `mapping` if there is no plot mapping.}
    the plot data. The return value must be a `data.frame`, and
    will be used as the layer data.}
 
+\item{geom}{The geometric object to use display the data}
+
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
@@ -49,15 +51,13 @@ the default plot specification, e.g. [borders()].}
 often aesthetics, used to set an aesthetic to a fixed value, like
 `colour = "red"` or `size = 3`. They may also be parameters
 to the paired geom/stat.}
-
-\item{stat}{The statistical transformation to use on the data for this
-layer, as a string.}
 }
 \description{
 Given a points set in data.frame, extends ggplot2 functionality to
 draw a line from the central to the farthest point.
 }
 \examples{
+library(ggplot2)
 madedata <- data.frame(x = rnorm(100, mean = 0, sd = 1),
 y = rnorm(100, mean = 0, sd = 1))
 ggplot(madedata, aes(x = x, y = y)) +
