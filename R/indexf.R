@@ -1,0 +1,9 @@
+#' A dataset containing the length and width of index finger of 4 adult females and 4 adult males.
+#'
+#' @format A data frame with 8 rows, and 3 variables:
+#' \describe{
+#' \item{sex}{sex, two categories: F and M}
+#' \item{length}{length of the index finger, in centimeter}
+#' \item{width}{width of the index finger, in centimeter}
+#' }
+"indexf"
