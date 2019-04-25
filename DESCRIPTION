@@ -15,7 +15,8 @@ Imports:
     magick,
     grid,
     utils,
-    geosphere
+    geosphere,
+    magrittr
 Suggests:
     maps,
     tidyverse
