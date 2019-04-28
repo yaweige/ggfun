@@ -5,6 +5,8 @@ Yawei Ge, Zhenzhen Chen, Weiquan Luo
 
 [![Travis build status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun)
 
+[![Coverage status](https://codecov.io/gh/yaweige/ggfun/branch/master/graph/badge.svg)](https://codecov.io/github/yaweige/ggfun?branch=master)
+
 Overview
 ========
 
