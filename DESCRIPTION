@@ -18,7 +18,6 @@ Imports:
     geosphere,
     magrittr
 Suggests:
-    maps,
-    tidyverse
+    maps
 Depends: R (>= 3.5.0)
 RoxygenNote: 6.1.1
