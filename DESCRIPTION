@@ -18,6 +18,7 @@ Imports:
     geosphere,
     magrittr
 Suggests:
-    maps
+    maps,
+    testthat
 Depends: R (>= 3.5.0)
 RoxygenNote: 6.1.1
