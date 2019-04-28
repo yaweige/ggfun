@@ -76,14 +76,14 @@ Other features can be modified similar to `geom_curve`.
 
 ``` r
 usmap <- map_data("state")
-madedata_standard <- data.frame(region = unique(usmap$region), 
+madedata <- data.frame(region = unique(usmap$region), 
                                 change = (runif(49)-0.5)*2,stringsAsFactors = FALSE)
-madedata_standard <- madedata_standard %>%
+madedata <- madedata %>%
   left_join(usmap,by = "region")
 ```
 
 ``` r
-madedata_standard %>%
+madedata %>%
   ggplot() +
   geom_path(aes(x = long, y = lat, group = group)) +
   stat_arrowmap(aes(x = long, y = lat, change = change, group = region),
