@@ -34,7 +34,7 @@ Functions
 
 This function is used to draw scatter plot as `geom_point` does, but replaced the points with a predefined image (Elephant and donkey).
 
-The usage is the same as `geom_image`
+The usage is the same as `geom_image`.
 
 ``` r
 library(ggplot2)
