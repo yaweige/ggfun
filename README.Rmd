@@ -10,6 +10,8 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+[![Travis build status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun)
+
 # Overview
 
 This package `ggfun` was created as an extension of `ggplot2` to add some functions for some specific goals, such as replacing points with images, making it more convenient to deal with map in some cases, generating some curves with given parameters, etc. But it is really an excercise for applying ggplot2 extension functionalities and there is large space to improve.

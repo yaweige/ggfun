@@ -3,6 +3,8 @@ ggplot2 Extension for Fun
 Yawei Ge, Zhenzhen Chen, Weiquan Luo
 3/22/2019
 
+[![Travis build status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun)
+
 Overview
 ========
 
