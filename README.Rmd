@@ -128,3 +128,22 @@ eq <- read.delim(f, as.is=T) %>%
 fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450000, colour = "blue") +
    geom_point(); fp
 ```
+
+### `stat_ars`
+
+This function applied the algorithm to calculate the Archimedean spiral. Then we apply `ggplot2` to connect each point to draw a spiral. 
+
+```{r}
+ggplot() +
+   stat_ars(aes(a = 8, b = 20, n = 2), col = "coral")
+```
+
+### `stat_rl`
+
+This function is used to draw regression line for the each level of the categorical variable.
+
+```{r}
+ggplot(indexf, aes(x = length, y = width, id = sex)) +
+ geom_point() +
+ stat_rl(aes(x = length, y =  width, id = sex, colour = sex))
+```

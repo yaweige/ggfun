@@ -61,7 +61,7 @@ StatArs <- ggproto("StatArs", Stat,
 
                    compute_group = function(data, scales) {
 
-                     theta <- seq(0, data$n * pi, length = data$n * 1000)
+                     theta <- seq(0, 2* data$n * pi, length = data$n * 1000)
                      r <- data$a + data$b * theta
                      x <- r * sin(theta)
                      y <- r * cos(theta)
