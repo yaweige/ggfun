@@ -1,5 +1,6 @@
-#' To draw line segments between locations on map by distance.
+#' @title To draw line segments between locations on map by distance.
 #'
+#' @description
 #' Given a points set as Geographic locations in a data.frame, extends ggplot2 functionality to
 #' draw a line from location to location with defined criterion of distance in km. The concept is inhered from persist homology.
 #' The linkage in resulting figures can be used to recognize patterns or cluster of points.
@@ -69,17 +70,13 @@
 #'         panel.grid.major=element_blank(),
 #'         panel.grid.minor=element_blank(),
 #'         plot.background=element_blank()); p
-#' f <- system.file("extdata", "eqData.txt", package = "ggfun")
-#' eq <- read.delim(f, as.is=TRUE) %>%
-#'   filter(!is.na(LONGITUDE) & !is.na(LATITUDE)) %>%
+#' data(eqRaw)
+#' eq <- eqRaw %>%
 #'   filter(LONGITUDE > 110 | LONGITUDE < -45) %>%
-#'   mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) %>%
-#'   select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
+#'   mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE))
 #' ## add layer_PersHomo
-#' fp <- p + layer_PersHomo(data= eq,
-#' mapping = aes(x=LONGITUDE, y=LATITUDE),
-#' d=450000, colour = "blue") +
-#'   geom_point(); fp
+#' fp <- p + layer_PersHomo(data= eq,mapping = aes(x=LONGITUDE, y=LATITUDE),
+#'   d=450000, colour = "blue") + geom_point(); fp
 #'
 #'
 

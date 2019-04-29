@@ -85,17 +85,13 @@ p <- ggplot() +
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         plot.background=element_blank()); p
-f <- system.file("extdata", "eqData.txt", package = "ggfun")
-eq <- read.delim(f, as.is=TRUE) \%>\%
-  filter(!is.na(LONGITUDE) & !is.na(LATITUDE)) \%>\%
+data(eqRaw)
+eq <- eqRaw \%>\%
   filter(LONGITUDE > 110 | LONGITUDE < -45) \%>\%
-  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE)) \%>\%
-  select(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
+  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE))
 ## add layer_PersHomo
-fp <- p + layer_PersHomo(data= eq,
-mapping = aes(x=LONGITUDE, y=LATITUDE),
-d=450000, colour = "blue") +
-  geom_point(); fp
+fp <- p + layer_PersHomo(data= eq,mapping = aes(x=LONGITUDE, y=LATITUDE),
+  d=450000, colour = "blue") + geom_point(); fp
 
 
 }
