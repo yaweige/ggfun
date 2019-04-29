@@ -58,5 +58,5 @@ To Draw a Archimedean Spiral
 \examples{
 library(ggplot2)
 ggplot() +
-  stat_ars(aes(a = 10, b = 20), col = "blue")
+  stat_ars(aes(a = 10, b = 20, n = 2), col = "blue")
 }

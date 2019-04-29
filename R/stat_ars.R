@@ -41,7 +41,7 @@
 #' @examples
 #' library(ggplot2)
 #' ggplot() +
-#'   stat_ars(aes(a = 10, b = 20), col = "blue")
+#'   stat_ars(aes(a = 10, b = 20, n = 2), col = "blue")
 
 stat_ars <- function(mapping = NULL, data = NULL, geom = "point",
                      position = "identity", na.rm = FALSE, show.legend = NA,
@@ -61,13 +61,13 @@ StatArs <- ggproto("StatArs", Stat,
 
                    compute_group = function(data, scales) {
 
-                     theta <- seq(0, 2*pi, length = 1000)
+                     theta <- seq(0, data$n * pi, length = data$n * 1000)
                      r <- data$a + data$b * theta
                      x <- r * sin(theta)
                      y <- r * cos(theta)
 
                      data.frame(x = x, y = y)
                    },
-                   required_aes = c("a", "b")
+                   required_aes = c("a", "b", "n")
 )
 
