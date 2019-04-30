@@ -8,6 +8,11 @@ library(ggfun)
 
 # Layer_PersHomo data source: https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1
 data(eqRaw)
+
+# geom_image imag input
+p <- system.file("extdata", "images.jpg", package = "ggfun")
+img <- magick::image_read(p)
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   navbarPage("ggfun",
@@ -152,7 +157,7 @@ server <- function(input, output,session) {
 
   output$geomimage <- renderPlot({
     ggplot(data = mtcars, aes_string(x = input$x_variable, y = input$y_variable)) +
-      geom_image(size = input$size) +
+      geom_image(size = input$size, img = img) +
       ggtitle("mtcars data set")
   })
 
