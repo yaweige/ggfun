@@ -58,6 +58,8 @@ Work like geom_point with points replaced by a predefined image
 }
 \examples{
 library(ggplot2)
-ggplot(mtcars, aes(wt, mpg)) + geom_image()
+p <- system.file("extdata", "images.jpg", package = "ggfun")
+img <- magick::image_read(p)
+ggplot() + geom_image(data = mtcars, mapping = aes(x = wt, y = mpg), img = img, size =0.05)
 
 }

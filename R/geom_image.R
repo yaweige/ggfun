@@ -42,7 +42,9 @@
 #' @importFrom  ggplot2 layer
 #' @examples
 #' library(ggplot2)
-#' ggplot(mtcars, aes(wt, mpg)) + geom_image()
+#' p <- system.file("extdata", "images.jpg", package = "ggfun")
+#' img <- magick::image_read(p)
+#' ggplot() + geom_image(data = mtcars, mapping = aes(x = wt, y = mpg), img = img, size =0.05)
 #'
 
 
@@ -64,13 +66,6 @@ geom_image <- function(mapping = NULL, data = NULL, stat = "identity",
 #' @importFrom ggplot2 ggproto
 #' @importFrom magick image_read
 #' @importFrom grid rasterGrob
-
-ImageGrob <- function(x, y, size, img) {
-  p <- system.file("extdata", "images.jpg", package = "ggfun")
-  img <- magick::image_read(p)
-  rasterGrob(x = x, y = y, image = img, default.units = "native", height = size, width = size)
-}
-
 #' @format NULL
 #' @usage NULL
 #' @import ggplot2
@@ -79,21 +74,24 @@ ImageGrob <- function(x, y, size, img) {
 
 
 GeomImage <- ggproto("GeomImage", Geom,
-                     draw_panel = function(data, panel_scales,
-                                           coord, img, na.rm = FALSE) {
-                       coords <- coord$transform(data, panel_scales)
-                       ggname = getFromNamespace("ggname", "ggplot2")
-                       ggname("geom_image", ImageGrob(coords$x, coords$y, coords$size,
-                                                                img))
-                     },
-                     non_missing_aes = c("image", "size"),
-                     required_aes = c("x", "y"),
-                     default_aes = aes(size = 0.05),
-                     icon = function(.) {
-                     },
-                     desc_params = list(),
-                     seealso = list(geom_point = GeomPoint$desc),
-                     examples = function(.) {
-                     }
+                      draw_panel = function(data, panel_scales,
+                                            coord, img, size, na.rm = FALSE) {
+                        ImageGrob <-function(x, y, size, img) {
+                          rasterGrob(x = x, y = y, image = img, default.units = "native", height = size, width = size)
+                        }
+                        coords <- coord$transform(data, panel_scales)
+                        ggname = getFromNamespace("ggname", "ggplot2")
+                        ggname("geom_image", ImageGrob(coords$x, coords$y, coords$size,
+                                                         img))
+                      },
+                      non_missing_aes = c("image", "size"),
+                      required_aes = c("x", "y"),
+                      default_aes = aes(size = 0.05),
+                      icon = function(.) {
+                      },
+                      desc_params = list(),
+                      seealso = list(geom_point = GeomPoint$desc),
+                      examples = function(.) {
+                      }
 )
 

@@ -3,7 +3,7 @@
 \docType{data}
 \name{eqRaw}
 \alias{eqRaw}
-\title{A dataset containing historical earthquark record around the world from -70 to 2017 AD. Source: https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1}
+\title{A dataset containing historical earthquark record around the world from -70 to 2017 AD.}
 \format{A data frame with 6099 data points, and 8 variables:
 \describe{
 \item{YEAR}{when the earthquark occur in year}
@@ -14,12 +14,14 @@
 \item{LOCATION_NAME}{the detail location where the earthquark occurred}
 \item{LATITUDE}{the latitude of the location}
 \item{LONGITUDE}{the longitude of the location}
-
 }}
+\source{
+https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1
+}
 \usage{
 eqRaw
 }
 \description{
-A dataset containing historical earthquark record around the world from -70 to 2017 AD. Source: https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=1&d=1
+A dataset containing historical earthquark record around the world from -70 to 2017 AD.
 }
 \keyword{datasets}
