@@ -3,7 +3,7 @@ ggplot2 Extension for Fun
 Yawei Ge, Zhenzhen Chen, Weiquan Luo
 3/22/2019
 
-[![Travis build status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun) [![Coverage status](https://codecov.io/gh/yaweige/ggfun/branch/master/graph/badge.svg)](https://codecov.io/github/yaweige/ggfun?branch=master)
+[![Travis build status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun) [![Coverage status](https://codecov.io/gh/yaweige/ggfun/branch/master/graph/badge.svg)](https://codecov.io/github/yaweige/ggfun?branch=master) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 Overview
 ========
