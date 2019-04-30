@@ -50,7 +50,9 @@ library(ggplot2)
 library(ggfun)
 library(dplyr)
 
-ggplot(mtcars, aes(wt, mpg)) + geom_image()
+p <- system.file("extdata", "images.jpg", package = "ggfun")
+img <- magick::image_read(p)
+ggplot() + geom_image(data = mtcars, mapping = aes(x = wt, y = mpg), img = img, size =0.05)
 ```
 
 ### `stat_star`
