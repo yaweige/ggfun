@@ -7,7 +7,7 @@ Yawei Ge, Zhenzhen Chen, Weiquan Luo
 status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun)
 [![Coverage
 status](https://codecov.io/gh/yaweige/ggfun/branch/master/graph/badge.svg)](https://codecov.io/github/yaweige/ggfun?branch=master)
-[![Project Status: Active – The project has reached a stable, usable
+[![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
@@ -120,7 +120,22 @@ madedata %>%
 
 ### `layer_PersHomo`
 
-Persistant Homoly of earthquark around pacific plate
+The function provide a preview of persistant homology for geographic
+locations. It helps to investigate whether any clustering of the events
+respect to geographic location. To use the function, a data set with
+longitude and latitude of multiple geographic locations and a
+user-defined Geo distance parameter are required.
+
+The required input:
+
+  - `data`: The dataframe with longitude and latitude
+  - `x`: longitude
+  - `y`: latitude
+  - `d`: the magnitude of real Geo distance (in km) used as the
+    criterion to link two locations
+
+The following example shows the persistant homology of earthquake event
+around pacific plate.
 
 ``` r
 library(magrittr) 
