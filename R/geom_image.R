@@ -49,8 +49,11 @@
 geom_image <- function(mapping = NULL, data = NULL, stat = "identity",
                        position = "identity", na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
                        ...) {
-  layer(data = data, mapping = mapping, stat = stat, geom = GeomImage,
-        position = position, show.legend = show.legend, inherit.aes = inherit.aes,
+  layer(data = data, mapping = mapping,
+        stat = stat, geom = GeomImage,
+        position = position,
+        show.legend = show.legend,
+        inherit.aes = inherit.aes,
         params = list(na.rm = na.rm, ...))
 }
 
@@ -65,8 +68,7 @@ geom_image <- function(mapping = NULL, data = NULL, stat = "identity",
 ImageGrob <- function(x, y, size, img) {
   p <- system.file("extdata", "images.jpg", package = "ggfun")
   img <- magick::image_read(p)
-  rasterGrob(x = x, y = y, image = img, default.units = "native", height = size,
-             width = size)
+  rasterGrob(x = x, y = y, image = img, default.units = "native", height = size, width = size)
 }
 
 #' @format NULL

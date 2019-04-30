@@ -1,3 +1,4 @@
+^docs$
 ^codecov\.yml$
 ^\.travis\.yml$
 ^README_files$

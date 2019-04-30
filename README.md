@@ -3,28 +3,19 @@ ggplot2 Extension for Fun
 Yawei Ge, Zhenzhen Chen, Weiquan Luo
 3/22/2019
 
-[![Travis build
-status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun)
-[![Coverage
-status](https://codecov.io/gh/yaweige/ggfun/branch/master/graph/badge.svg)](https://codecov.io/github/yaweige/ggfun?branch=master)
+[![Travis build status](https://travis-ci.org/yaweige/ggfun.svg?branch=master)](https://travis-ci.org/yaweige/ggfun) [![Coverage status](https://codecov.io/gh/yaweige/ggfun/branch/master/graph/badge.svg)](https://codecov.io/github/yaweige/ggfun?branch=master) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-# Overview
+Overview
+========
 
-This package `ggfun` was created as an extension of `ggplot2` to add
-some functions for some specific goals, such as replacing points with
-images, making it more convenient to deal with map in some cases,
-generating some curves with given parameters, etc. But it is really an
-excercise for applying ggplot2 extension functionalities and there is
-large space to improve.
+This package `ggfun` was created as an extension of `ggplot2` to add some functions for some specific goals, such as replacing points with images, making it more convenient to deal with map in some cases, generating some curves with given parameters, etc. But it is really an excercise for applying ggplot2 extension functionalities and there is large space to improve.
 
-Here is a link to our GitHub
-[repository](https://github.com/yaweige/ggfun) where the code for the
-package is stored.
+Here is a link to our GitHub [repository](https://github.com/yaweige/ggfun) where the code for the package is stored.
 
-# Installation
+Installation
+============
 
-The package can be downloaded from GitHub. You can use the following
-code to install.
+The package can be downloaded from GitHub. You can use the following code to install.
 
 ``` r
 # Install the package from github
@@ -38,12 +29,12 @@ You can then load the package in the normal way.
 library(ggfun)
 ```
 
-# Functions
+Functions
+=========
 
 ### `geom_image`
 
-This function is used to draw scatter plot as `geom_point` does, but
-replaced the points with a predefined image (Elephant and donkey).
+This function is used to draw scatter plot as `geom_point` does, but replaced the points with a predefined image (Elephant and donkey).
 
 The usage is the same as `geom_image`.
 
@@ -55,14 +46,11 @@ library(dplyr)
 ggplot(mtcars, aes(wt, mpg)) + geom_image()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 ### `stat_star`
 
-This function applied the algorithm to calculate the distances between
-the central point (defined by median) and other points, and connect the
-central point to the farthest point with a line, which can be modified
-as a regular line object in `ggplot2`.
+This function applied the algorithm to calculate the distances between the central point (defined by median) and other points, and connect the central point to the farthest point with a line, which can be modified as a regular line object in `ggplot2`.
 
 ``` r
 madedata <- data.frame(x = rnorm(100, mean = 0, sd = 1),
@@ -74,21 +62,17 @@ ggplot(madedata, aes(x = x, y = y)) +
   stat_star(color = "red")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 ### `stat_arrowmap`
 
-This function can draw arrow maps for the US. This function requres a
-specific type of data set, which generated as in the examples, with
-longutude, latitude and change which usually refers to the changes of
-party preference in US election for each state.
+This function can draw arrow maps for the US. This function requres a specific type of data set, which generated as in the examples, with longutude, latitude and change which usually refers to the changes of party preference in US election for each state.
 
 The required aesthetics are:
 
-  - `x`: usually longitude
-  - `y`: usually latitude
-  - `change`: the changes for each state (can be specified by group
-    aesthetics, as one state by default).
+-   `x`: usually longitude
+-   `y`: usually latitude
+-   `change`: the changes for each state (can be specified by group aesthetics, as one state by default).
 
 Other features can be modified similar to `geom_curve`.
 
@@ -111,7 +95,7 @@ madedata %>%
                               length = unit(0.1, "inches")))
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ### `layer_PersHomo`
 
@@ -142,24 +126,22 @@ eq <- eqRaw %>% filter(LONGITUDE > 110 | LONGITUDE < -45) %>%
 fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450000, colour = "blue"); fp
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ### `stat_ars`
 
-This function applied the algorithm to calculate the Archimedean spiral.
-Then we apply `ggplot2` to connect each point to draw a spiral.
+This function applied the algorithm to calculate the Archimedean spiral. Then we apply `ggplot2` to connect each point to draw a spiral.
 
 ``` r
 ggplot() +
    stat_ars(aes(a = 8, b = 20, n = 2), col = "coral")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 ### `stat_rl`
 
-This function is used to draw regression line for the each level of the
-categorical variable.
+This function is used to draw regression line for the each level of the categorical variable.
 
 ``` r
 ggplot(indexf, aes(x = length, y = width, id = sex)) +
@@ -167,4 +149,4 @@ ggplot(indexf, aes(x = length, y = width, id = sex)) +
  stat_rl(aes(x = length, y =  width, id = sex, colour = sex))
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
