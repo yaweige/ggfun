@@ -137,8 +137,6 @@ ggplot() +
    stat_ars(aes(a = 8, b = 20, n = 2), col = "coral")
 ```
 
-    ## Warning: Ignoring unknown aesthetics: n
-
 ![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 ### `stat_rl`
