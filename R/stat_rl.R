@@ -61,7 +61,7 @@ stat_rl <- function(mapping = NULL, data = NULL, geom = "line",
 #' @usage NULL
 #' @importFrom ggplot2 ggproto
 
-StatRl <- ggproto("StatLin", Stat,
+StatRl <- ggproto("StatRl", Stat,
                   compute_group = function(data, scales) {
 
                     rng <- range(data$x, na.rm = TRUE)
