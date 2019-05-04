@@ -66,15 +66,14 @@ stat_star <- function(mapping = NULL, data = NULL, geom = "line",
 #'
 
 StatStar <- ggplot2::ggproto("StatStar", Stat,
-                    compute_group = function(data, scales){
-                      med_x <- median(data$x)
-                      med_y <- median(data$y)
-                      dist <- unlist(Map(function(x, y) {sqrt((x-med_x)^2 + (y-med_y)^2)},
-                                         data$x, data$y))
-                      out <- rbind(data[which.min(dist), , drop = F],
-                                   data[which.max(dist), , drop = F])
-                      return(out)
-                    },
-
-                    required_aes = c("x", "y")
+                             compute_group = function(data, scales){
+                               med_x <- median(data$x)
+                               med_y <- median(data$y)
+                               dist <- unlist(Map(function(x, y) {sqrt((x-med_x)^2 + (y-med_y)^2)},
+                                                  data$x, data$y))
+                               out <- rbind(data[which.min(dist), , drop = F],
+                                            data[which.max(dist), , drop = F])
+                               return(out)
+                             },
+                             required_aes = c("x", "y")
 )

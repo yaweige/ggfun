@@ -85,11 +85,11 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>The package can be downloaded from GitHub. You can use the following code to install.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Install the package from github</span></a>
-<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"yaweige/ggfun"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install the package from github</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"yaweige/ggfun"</span>)</code></pre></div>
 <p>You can then load the package in the normal way.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># Load the package</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggfun)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load the package</span>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggfun)</code></pre></div>
 </div>
 <div id="functions" class="section level1">
 <h1 class="hasAnchor">
@@ -100,13 +100,13 @@
 </h3>
 <p>This function is used to draw scatter plot as <code>geom_point</code> does, but replaced the points with a predefined image (Elephant and donkey).</p>
 <p>The usage is the same as <code>geom_image</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggfun)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5">p &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"images.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)</a>
-<a class="sourceLine" id="cb3-6" title="6">img &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(p)</a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="reference/geom_image.html">geom_image</a></span>(<span class="dt">data =</span> mtcars, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg), <span class="dt">img =</span> img, <span class="dt">size =</span><span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggfun)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
+
+p &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"images.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
+img &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(p)
+<span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="reference/geom_image.html">geom_image</a></span>(<span class="dt">data =</span> mtcars, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg), <span class="dt">img =</span> img, <span class="dt">size =</span><span class="fl">0.05</span>)</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div id="stat_star" class="section level3">
@@ -114,13 +114,13 @@
 <a href="#stat_star" class="anchor"></a><code>stat_star</code>
 </h3>
 <p>This function applied the algorithm to calculate the distances between the central point (defined by median) and other points, and connect the central point to the farthest point with a line, which can be modified as a regular line object in <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">madedata &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb4-2" title="2">                       <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="kw">ggplot</span>(madedata, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="st">  </span><span class="kw"><a href="reference/stat_star.html">stat_star</a></span>(<span class="dt">color =</span> <span class="st">"red"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">madedata &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>),
+                       <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>))
+
+
+<span class="kw">ggplot</span>(madedata, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="reference/stat_star.html">stat_star</a></span>(<span class="dt">color =</span> <span class="st">"red"</span>)</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
 <div id="stat_arrowmap" class="section level3">
@@ -138,19 +138,19 @@
 <code>change</code>: the changes for each state (can be specified by group aesthetics, as one state by default).</li>
 </ul>
 <p>Other features can be modified similar to <code>geom_curve</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">usmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"state"</span>)</a>
-<a class="sourceLine" id="cb5-2" title="2">madedata &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">region =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(usmap<span class="op">$</span>region), </a>
-<a class="sourceLine" id="cb5-3" title="3">                                <span class="dt">change =</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">49</span>)<span class="op">-</span><span class="fl">0.5</span>)<span class="op">*</span><span class="dv">2</span>,<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb5-4" title="4">madedata &lt;-<span class="st"> </span>madedata <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="st">  </span><span class="kw">left_join</span>(usmap,<span class="dt">by =</span> <span class="st">"region"</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">madedata <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw"><a href="reference/stat_arrowmap.html">stat_arrowmap</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">change =</span> change, <span class="dt">group =</span> region),</a>
-<a class="sourceLine" id="cb6-5" title="5">                <span class="dt">curvature =</span> <span class="fl">0.3</span>, <span class="dt">angle =</span> <span class="dv">60</span>,</a>
-<a class="sourceLine" id="cb6-6" title="6">                <span class="dt">size =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb6-7" title="7">                <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">type =</span> <span class="st">"open"</span>,</a>
-<a class="sourceLine" id="cb6-8" title="8">                              <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>)))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">usmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"state"</span>)
+madedata &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">region =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(usmap<span class="op">$</span>region), 
+                                <span class="dt">change =</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">49</span>)<span class="op">-</span><span class="fl">0.5</span>)<span class="op">*</span><span class="dv">2</span>,<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+madedata &lt;-<span class="st"> </span>madedata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(usmap,<span class="dt">by =</span> <span class="st">"region"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">madedata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="reference/stat_arrowmap.html">stat_arrowmap</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">change =</span> change, <span class="dt">group =</span> region),
+                <span class="dt">curvature =</span> <span class="fl">0.3</span>, <span class="dt">angle =</span> <span class="dv">60</span>,
+                <span class="dt">size =</span> <span class="dv">1</span>,
+                <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">type =</span> <span class="st">"open"</span>,
+                              <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>)))</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
 <div id="layer_pershomo" class="section level3">
@@ -170,28 +170,28 @@
 <code>d</code>: the magnitude of real Geo distance (in km) used as the criterion to link two locations</li>
 </ul>
 <p>The following example shows the persistant homology of earthquake event around pacific plate.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr) </a>
-<a class="sourceLine" id="cb7-2" title="2">worldmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"world2"</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data=</span>worldmap, <span class="kw">aes</span>(<span class="dt">x=</span>long, <span class="dt">y=</span>lat, <span class="dt">group =</span> group),<span class="dt">fill=</span><span class="st">"white"</span>, <span class="dt">colour=</span><span class="st">"#7f7f7f"</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.line=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-6" title="6">        <span class="dt">axis.text.x=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-7" title="7">        <span class="dt">axis.text.y=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-8" title="8">        <span class="dt">axis.ticks=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-9" title="9">        <span class="dt">axis.title.x=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-10" title="10">        <span class="dt">axis.title.y=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-11" title="11">        <span class="dt">legend.position=</span><span class="st">"none"</span>,</a>
-<a class="sourceLine" id="cb7-12" title="12">        <span class="dt">panel.background=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-13" title="13">        <span class="dt">panel.border=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-14" title="14">        <span class="dt">panel.grid.major=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-15" title="15">        <span class="dt">panel.grid.minor=</span><span class="kw">element_blank</span>(),</a>
-<a class="sourceLine" id="cb7-16" title="16">        <span class="dt">plot.background=</span><span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb7-17" title="17"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(eqRaw)</a>
-<a class="sourceLine" id="cb7-18" title="18">eq &lt;-<span class="st"> </span>eqRaw <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(LONGITUDE <span class="op">&gt;</span><span class="st"> </span><span class="dv">110</span> <span class="op">|</span><span class="st"> </span>LONGITUDE <span class="op">&lt;</span><span class="st"> </span><span class="dv">-45</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-19" title="19"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">LONGITUDE =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ifelse">ifelse</a></span>(LONGITUDE <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, LONGITUDE <span class="op">+</span><span class="st"> </span><span class="dv">360</span>, LONGITUDE)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-20" title="20"><span class="st">  </span><span class="kw">select</span>(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)</a>
-<a class="sourceLine" id="cb7-21" title="21"><span class="co">## add layer_PersHomo</span></a>
-<a class="sourceLine" id="cb7-22" title="22">fp &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="reference/layer_PersHomo.html">layer_PersHomo</a></span>(<span class="dt">data=</span> eq, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>LONGITUDE, <span class="dt">y=</span>LATITUDE), <span class="dt">d=</span><span class="dv">450000</span>, <span class="dt">colour =</span> <span class="st">"blue"</span>); fp</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr) 
+worldmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"world2"</span>)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data=</span>worldmap, <span class="kw">aes</span>(<span class="dt">x=</span>long, <span class="dt">y=</span>lat, <span class="dt">group =</span> group),<span class="dt">fill=</span><span class="st">"white"</span>, <span class="dt">colour=</span><span class="st">"#7f7f7f"</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.line=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.text.x=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.text.y=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.ticks=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.title.x=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.title.y=</span><span class="kw">element_blank</span>(),
+        <span class="dt">legend.position=</span><span class="st">"none"</span>,
+        <span class="dt">panel.background=</span><span class="kw">element_blank</span>(),
+        <span class="dt">panel.border=</span><span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.major=</span><span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.minor=</span><span class="kw">element_blank</span>(),
+        <span class="dt">plot.background=</span><span class="kw">element_blank</span>())
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(eqRaw)
+eq &lt;-<span class="st"> </span>eqRaw <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(LONGITUDE <span class="op">&gt;</span><span class="st"> </span><span class="dv">110</span> <span class="op">|</span><span class="st"> </span>LONGITUDE <span class="op">&lt;</span><span class="st"> </span><span class="op">-</span><span class="dv">45</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">LONGITUDE =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ifelse">ifelse</a></span>(LONGITUDE <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, LONGITUDE <span class="op">+</span><span class="st"> </span><span class="dv">360</span>, LONGITUDE)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(YEAR, MONTH,DAY, EQ_MAG_MS, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE)
+## add layer_PersHomo
+fp &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="reference/layer_PersHomo.html">layer_PersHomo</a></span>(<span class="dt">data=</span> eq, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>LONGITUDE, <span class="dt">y=</span>LATITUDE), <span class="dt">d=</span><span class="dv">450000</span>, <span class="dt">colour =</span> <span class="st">"blue"</span>); fp</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div id="stat_ars" class="section level3">
@@ -199,8 +199,8 @@
 <a href="#stat_ars" class="anchor"></a><code>stat_ars</code>
 </h3>
 <p>This function applied the algorithm to calculate the Archimedean spiral. Then we apply <code>ggplot2</code> to connect each point to draw a spiral.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="st">   </span><span class="kw"><a href="reference/stat_ars.html">stat_ars</a></span>(<span class="kw">aes</span>(<span class="dt">a =</span> <span class="dv">8</span>, <span class="dt">b =</span> <span class="dv">20</span>, <span class="dt">n =</span> <span class="dv">2</span>), <span class="dt">col =</span> <span class="st">"coral"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">   </span><span class="kw"><a href="reference/stat_ars.html">stat_ars</a></span>(<span class="kw">aes</span>(<span class="dt">a =</span> <span class="dv">8</span>, <span class="dt">b =</span> <span class="dv">20</span>, <span class="dt">n =</span> <span class="dv">2</span>), <span class="dt">col =</span> <span class="st">"coral"</span>)</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 <div id="stat_rl" class="section level3">
@@ -208,9 +208,9 @@
 <a href="#stat_rl" class="anchor"></a><code>stat_rl</code>
 </h3>
 <p>This function is used to draw regression line for the each level of the categorical variable.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">ggplot</span>(indexf, <span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span> width, <span class="dt">id =</span> sex)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="st"> </span><span class="kw"><a href="reference/stat_rl.html">stat_rl</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span>  width, <span class="dt">id =</span> sex, <span class="dt">colour =</span> sex))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(indexf, <span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span> width, <span class="dt">id =</span> sex)) <span class="op">+</span>
+<span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st"> </span><span class="kw"><a href="reference/stat_rl.html">stat_rl</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span>  width, <span class="dt">id =</span> sex, <span class="dt">colour =</span> sex))</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>

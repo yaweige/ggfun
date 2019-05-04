@@ -73,7 +73,7 @@
       <h1>Vignette Title</h1>
                         <h4 class="author">Vignette Author</h4>
             
-            <h4 class="date">2019-04-30</h4>
+            <h4 class="date">2019-05-03</h4>
       
       
       <div class="hidden name"><code>ggfun-vignette.Rmd</code></div>
@@ -105,8 +105,8 @@
 <h2 class="hasAnchor">
 <a href="#figures" class="anchor"></a>Figures</h2>
 <p>The figure sizes have been customised so that you can easily put two images side-by-side.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</code></pre></div>
 <p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-1-1.png" width="700"><img src="ggfun-vignette_files/figure-html/unnamed-chunk-1-2.png" width="700"></p>
 <p>You can enable figure captions by <code>fig_caption: yes</code> in YAML:</p>
 <pre><code>output:
@@ -117,7 +117,7 @@
 <div id="more-examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#more-examples" class="anchor"></a>More Examples</h2>
-<p>You can write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>.</p>
+<p>You can write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>.</p>
 <table class="table">
 <thead><tr class="header">
 <th></th>
@@ -284,6 +284,83 @@
 <div id="yawei-part" class="section level1">
 <h1 class="hasAnchor">
 <a href="#yawei-part" class="anchor"></a>Yawei Part</h1>
+<div id="stat_star" class="section level2">
+<h2 class="hasAnchor">
+<a href="#stat_star" class="anchor"></a>stat_star()</h2>
+<p>This function is a simple application of <code>ggplot2</code> extension functionlity in <code>stat</code> function. We provided an algorithm here to calculate the “distance” between points and the central point (defined by median) ginven a data set for scatter plot. And draw a line from the central point to the farthest point. It works with usual <code>line</code> geometry objects and applies our algorithm as <code>stat</code>.</p>
+<p>The following two examples show the usage in a skewed distribution and a bell-shaped distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">madedata1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>), 
+                        <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Fdist">rf</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">df1 =</span> <span class="dv">5</span>, <span class="dt">df2 =</span> <span class="dv">2</span>))
+madedata2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>), 
+                        <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>))
+
+<span class="kw">ggplot</span>(madedata1, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/stat_star.html">stat_star</a></span>()</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">ggplot</span>(madedata2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/stat_star.html">stat_star</a></span>()</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-3-2.png" width="700"></p>
+</div>
+<div id="stat_arrowmap" class="section level2">
+<h2 class="hasAnchor">
+<a href="#stat_arrowmap" class="anchor"></a>stat_arrowmap()</h2>
+<p>This function follows the same logic from the above function. They both create new algorithms for certain purposes and make use of the existing geometry objects in <code>ggplot2</code>. This function is less general and focuses on a very specific goal that is to create a so called arrow map for the US elections. So it requires the US map information and a data set containing some elements needed to show here.</p>
+<p>So usually before you can directly using this function, you need to organize your data into a required form. The required aesthetics are:</p>
+<ul>
+<li>
+<code>x</code>: usually longitude</li>
+<li>
+<code>y</code>: usually latitude</li>
+<li>
+<code>change</code>: the changes for each state (can be specified by group aesthetics, as one state by default).</li>
+</ul>
+<p>Here we use a made up data set to illustrate the main usage of the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">usmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"state"</span>)
+madedata &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">region =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(usmap<span class="op">$</span>region), 
+                                <span class="dt">change =</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">49</span>)<span class="op">-</span><span class="fl">0.5</span>)<span class="op">*</span><span class="dv">2</span>,<span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+madedata &lt;-<span class="st"> </span>madedata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">left_join</span>(usmap,<span class="dt">by =</span> <span class="st">"region"</span>)
+
+madedata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/stat_arrowmap.html">stat_arrowmap</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">change =</span> change, <span class="dt">group =</span> region))</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
+<p>This is not a good picture, however, notice that we can use the parameters in <code>geom_curve</code> here to modify the arrows to make them better since this function use the <code>curve</code> geometry object.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">madedata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="../reference/stat_arrowmap.html">stat_arrowmap</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">change =</span> change, <span class="dt">group =</span> region),
+                <span class="dt">curvature =</span> <span class="fl">0.3</span>, <span class="dt">angle =</span> <span class="dv">60</span>,
+                <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">arrow.fill =</span> <span class="st">"yellow"</span>, 
+                <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">angle =</span> <span class="dv">25</span>,
+                              <span class="dt">type =</span> <span class="st">"closed"</span>,
+                              <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>)))</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-5-1.png" width="480"></p>
+</div>
+<div id="geom_image" class="section level2">
+<h2 class="hasAnchor">
+<a href="#geom_image" class="anchor"></a>geom_image()</h2>
+<p>This function replaces the usual points object in <code>ggplot2</code> with provied image. This is different from the previous <code>stat</code> related functions, because it create a new geometry object instead of using the existing one. You can treat it like <code>geom_point</code> with the points replaced by your image.</p>
+<p>Examples are shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"donkey.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
+path2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"elephant.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
+p1 &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(path1)
+p2 &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(path2)
+
+mtcars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/geom_image.html">geom_image</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg), <span class="dt">img =</span> p1)</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+mtcars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/geom_image.html">geom_image</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> qsec, <span class="dt">y =</span> mpg), <span class="dt">img =</span> p2, <span class="dt">size =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-6-2.png" width="480"></p>
+</div>
 </div>
 <div id="zhenzhen-part" class="section level1">
 <h1 class="hasAnchor">
@@ -296,7 +373,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>A footnote here.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>A footnote here.<a href="#fnref1">↩</a></p></li>
 </ol>
 </div>
   </div>
@@ -310,7 +387,13 @@
       <li><a href="#styles">Styles</a></li>
       <li><a href="#figures">Figures</a></li>
       <li><a href="#more-examples">More Examples</a></li>
-      <li><a href="#yawei-part">Yawei Part</a></li>
+      <li>
+<a href="#yawei-part">Yawei Part</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#stat_star">stat_star()</a></li>
+      <li><a href="#stat_arrowmap">stat_arrowmap()</a></li>
+      <li><a href="#geom_image">geom_image()</a></li>
+      </ul>
+</li>
       <li><a href="#zhenzhen-part">Zhenzhen Part</a></li>
       <li><a href="#weiquan-part">Weiquan Part</a></li>
       </ul>
