@@ -180,13 +180,15 @@ ui <- fluidPage(
 
                           helpText("Draw regression line for each level:"),
 
-                          numericInput("Xn", "Choose sample size for the Standardized Normal distribution(X):", min = 1, max = 500, value = 1),
+                          numericInput("Xn", "Choose sample size for the Standardized Normal distribution(X):", min = 1, max = 500, value = 100),
 
 
-                          numericInput("Yn", "Choose sample size for the Standardized Normal distribution(Y):", min = 1, max = 500, value = 1),
+                          numericInput("Yn", "Choose sample size for the Standardized Normal distribution(Y):", min = 1, max = 500, value = 100),
 
 
-                          numericInput("Id", "Choose categorical variable length", min = 1, max = 500, value = 1)
+                          numericInput("Id", "Choose categorical variable length", min = 1, max = 500, value = 100),
+
+                          numericInput("l", "Choose number of the levels for categorical variable", min = 2, max = 500, value = 2)
                         ),
 
                         mainPanel(
@@ -311,7 +313,7 @@ server <- function(input, output,session) {
   output$statrl <- renderPlot({
     ggplot(data = data.frame(x = rnorm(input$Xn, mean = 0, sd = 1),
                              y = rnorm(input$Yn, mean = 0, sd = 1),
-                             id = sample(c("1", "2"), input$Id, replace = T)), aes(x = x, y = y)) +
+                             id = sample(as.factor(c(1:input$l)), input$Id, replace = T)), aes(x = x, y = y)) +
       geom_point() +
       stat_rl(aes(x = x, y = y, id = id, colour = id))
   })
