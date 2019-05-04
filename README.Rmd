@@ -143,6 +143,13 @@ fp <- p + layer_PersHomo(data= eq, mapping = aes(x=LONGITUDE, y=LATITUDE), d=450
 
 This function applied the algorithm to calculate the Archimedean spiral. Then we apply `ggplot2` to connect each point to draw a spiral. 
 
+The required parameters are: 
+
+- `a`: rotating the spiral
+- `b`: distance control between two adjacent curves
+- `n`: the number of turns
+
+The following example shows how does this function works based on these three parameters.
 ```{r}
 ggplot() +
    stat_ars(aes(a = 8, b = 20, n = 2), col = "coral")
@@ -152,6 +159,13 @@ ggplot() +
 
 This function is used to draw regression line for the each level of the categorical variable.
 
+The required aesthetics are: 
+
+- `x`: the numerical explanatory variable
+- `y`: the numerical response variable
+- `id`: the categorical variable with more than one level
+
+The following example shows two regression line for the given dataset. 
 ```{r}
 ggplot(indexf, aes(x = length, y = width, id = sex)) +
  geom_point() +
