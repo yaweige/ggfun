@@ -147,8 +147,6 @@ ui <- fluidPage(
              tabPanel("stat_arrowmap",
                       sidebarLayout(
                         sidebarPanel(
-                          textInput("saysomething", "Do you want to say something?",
-                                    value = ""),
                           verbatimTextOutput("text"),
                           radioButtons("arrowtype", "Arrow type",
                                        choices = list("closed" = "closed", open = "open"),
