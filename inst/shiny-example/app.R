@@ -92,6 +92,58 @@ ui <- fluidPage(
                         )
                       )),
 
+             tabPanel("stat_ars",
+                      sidebarLayout(
+                        sidebarPanel(
+
+                          helpText("Draw Archimedean spiral:"),
+
+                          sliderInput("a", "Rotating the Spiral a:", 1, min = -50, max = 50),
+
+
+                          sliderInput("b", "Distance Control b:", 1, min = -50, max = 50),
+
+
+                          sliderInput("n", "n:", 1, min = 1, max = 50)
+                        ),
+
+                        mainPanel(
+                          plotOutput("statars"),
+                          height = "auto",
+                          helpText("Example Code:",
+                                   "ggplot() +
+                                   stat_ars(aes(a = a, b = b, n = n)")
+                                   )
+
+                                   )),
+             tabPanel("stat_rl",
+                      sidebarLayout(
+                        sidebarPanel(
+
+                          helpText("Draw regression line for each level:"),
+
+                          numericInput("Xn", "Choose sample size for the Standardized Normal distribution(X):", min = 1, max = 500, value = 100),
+
+
+                          numericInput("Yn", "Choose sample size for the Standardized Normal distribution(Y):", min = 1, max = 500, value = 100),
+
+
+                          numericInput("Id", "Choose categorical variable length", min = 1, max = 500, value = 100),
+
+                          numericInput("l", "Choose number of the levels for categorical variable", min = 2, max = 500, value = 2)
+                        ),
+
+                        mainPanel(
+                          plotOutput("statrl"),
+                          height = "auto",
+                          helpText("Example Code:",
+                                   "ggplot(data, aes(x = x, y = y)) +
+                                    geom_point() +
+                                   stat_rl(aes(x = x, y = y, id = id)")
+                                   )
+
+                                   )),
+
              tabPanel("stat_arrowmap",
                       sidebarLayout(
                         sidebarPanel(
@@ -148,59 +200,7 @@ ui <- fluidPage(
                           plotOutput("PersHomoMap"),
                           height="auto"
                         )
-                      )),
-
-             tabPanel("stat_ars",
-                      sidebarLayout(
-                        sidebarPanel(
-
-                          helpText("Draw Archimedean spiral:"),
-
-                          sliderInput("a", "Rotating the Spiral a:", 1, min = -50, max = 50),
-
-
-                          sliderInput("b", "Distance Control b:", 1, min = -50, max = 50),
-
-
-                          sliderInput("n", "n:", 1, min = 1, max = 50)
-                        ),
-
-                        mainPanel(
-                          plotOutput("statars"),
-                          height = "auto",
-                          helpText("Example Code:",
-                                   "ggplot() +
-                                   stat_ars(aes(a = a, b = b, n = n)")
-                                   )
-
-                                   )),
-             tabPanel("stat_rl",
-                      sidebarLayout(
-                        sidebarPanel(
-
-                          helpText("Draw regression line for each level:"),
-
-                          numericInput("Xn", "Choose sample size for the Standardized Normal distribution(X):", min = 1, max = 500, value = 100),
-
-
-                          numericInput("Yn", "Choose sample size for the Standardized Normal distribution(Y):", min = 1, max = 500, value = 100),
-
-
-                          numericInput("Id", "Choose categorical variable length", min = 1, max = 500, value = 100),
-
-                          numericInput("l", "Choose number of the levels for categorical variable", min = 2, max = 500, value = 2)
-                        ),
-
-                        mainPanel(
-                          plotOutput("statrl"),
-                          height = "auto",
-                          helpText("Example Code:",
-                                   "ggplot(data, aes(x = x, y = y)) +
-                                    geom_point() +
-                                   stat_rl(aes(x = x, y = y, id = id)")
-                                   )
-
-                                   ))
+                      ))
 
 
   )
@@ -229,6 +229,20 @@ server <- function(input, output,session) {
     ggplot(data = data, aes(x = x, y = y)) +
       geom_point() +
       stat_star(size = input$starsize, color = input$starcolor)
+  })
+
+
+  output$statars <- renderPlot({
+    ggplot() +
+      stat_ars(aes(a = input$a, b = input$b, n = input$n), col = "coral")
+  })
+
+  output$statrl <- renderPlot({
+    ggplot(data = data.frame(x = rnorm(input$Xn, mean = 0, sd = 1),
+                             y = rnorm(input$Yn, mean = 0, sd = 1),
+                             id = sample(as.factor(c(1:input$l)), input$Id, replace = T)), aes(x = x, y = y)) +
+      geom_point() +
+      stat_rl(aes(x = x, y = y, id = id, colour = id))
   })
 
   usmap <- map_data("state")
@@ -305,18 +319,6 @@ server <- function(input, output,session) {
     session$clientData$output_PersHomoMap_width * 2/3
   })
 
-  output$statars <- renderPlot({
-    ggplot() +
-      stat_ars(aes(a = input$a, b = input$b, n = input$n), col = "coral")
-  })
-
-  output$statrl <- renderPlot({
-    ggplot(data = data.frame(x = rnorm(input$Xn, mean = 0, sd = 1),
-                             y = rnorm(input$Yn, mean = 0, sd = 1),
-                             id = sample(as.factor(c(1:input$l)), input$Id, replace = T)), aes(x = x, y = y)) +
-      geom_point() +
-      stat_rl(aes(x = x, y = y, id = id, colour = id))
-  })
 }
 
 # Run the application
