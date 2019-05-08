@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "ggfun"
+author: "Yawei Ge; Zhenzhen Chen; Weiquan, Luo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -20,60 +20,23 @@ library(ggfun)
 library(dplyr)
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+#Introdction
 
-## Vignette Info
+The package 'ggfun' extends some of the existing ggplot2 functionalities by wrapping up some new layer functions and existing methods. It totally including six packages,'stat_star', 'stat_rl', 'stat_ars', 'stat_arrowmap', 'geom_image', and 'layer_PersHomo'. It covers 3 aspects of the statistics field, statistical method, image visualization, mathematical algorithms. The object-oriented system we used is called 'ggproto', and the four aspects we extend are 'stat', 'geom', 'theme', and 'faceting'.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+'stat': drawing the plot through some mathmatic algorithms. In ggfun package, stat_ars(), stat_star()£¬stat_arrowmap(),  are using this function. 
 
-## Styles
+'geom':showing the geometry objects in the plot. In ggfun package, geom_image() is using this function.
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+'faceting':organizing different panels, and designing the layout. In ggfun package, layer_PersHomo is using this function.
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
-
-
-# Yawei Part
 
 ## stat_star()
 
 This function is a simple application of `ggplot2` extension functionlity in `stat` function. We provided an algorithm here to calculate the "distance" between points and the central point (defined by median) ginven a data set for scatter plot. And draw a line from the central point to the farthest point. It works with usual `line` geometry objects and applies our algorithm as `stat`.
+
+### Examples
 
 The following two examples show the usage in a skewed distribution and a bell-shaped distribution.
 
@@ -92,6 +55,72 @@ ggplot(madedata2, aes(x = x, y = y)) +
   stat_star()
 ```
 
+
+## stat_rl
+
+This function is a application of `ggplot2` used to draw regression linear for each levels of the categorical variables. It does this by providing a new paramter called 'id', which can seperate the dataset by the levels of the categorical variable. 
+
+The required aesthetics are:
+
+- `x`: the numerical explanatory variable in the dataset 
+- `y`: the numerical response variable in the dataset
+- `id`: the categroical variable with more than two levels. 
+
+### Example
+
+'indexf' is dataset contain two numerical variable (length(cm) and width(cm)), and one categroical variable (sex (two levels: F, M)). 
+
+```{r}
+ggplot(indexf, aes(x = length, y = width, id = sex)) + 
+  geom_point() + 
+  stat_rl(aes(x = length, y = width, id = sex, col = sex))
+```
+
+We used 'id' this parameter to separate the dataset based on the levels of the categorical variable. For the plot, we can clearly to see that there are two regression lines for each level. The basic code and rule, we need for this function just following the 'ggplot2' package.
+
+
+## stat_ars()
+
+This function applied the mathematical algorithm to calculate the Archimedean Spiral. We built this function that can automatically to calculate the Archimedean Spiral and draw the spiral. It used the 'line' geometry objects and applies the algorithm as 'stat'. 
+
+The required parameters are:
+
+- `a`: rotating the spiral
+- `b`: the distance control between two adjacent curves
+- `n`: the number of turns 
+
+### Example
+
+```{r}
+ggplot() + 
+  stat_ars(aes(a = 8, b = 2, n = 2), col = "lightblue")
+```
+
+From this plot, we can see once the users input the three basic parameters for Archimedean Spiral, the function will automatically draw a spiral. We can also be based on adjusting these three parameters to see how each index will affect the spiral. For example, once you increase the 'b', the spiral will increase the distance between two curves. 
+
+
+## geom_image()
+
+This function replaces the usual points object in `ggplot2` with provied image. This is different from the previous `stat` related functions, because it create a new geometry object instead of using the existing one. You can treat it like `geom_point` with the points replaced by your image.
+
+### Example
+
+```{r , fig.width=5, fig.height=4}
+path1 <- system.file("extdata", "donkey.jpg", package = "ggfun")
+path2 <- system.file("extdata", "elephant.jpg", package = "ggfun")
+p1 <- magick::image_read(path1)
+p2 <- magick::image_read(path2)
+
+mtcars %>%
+  ggplot() + 
+  geom_image(aes(x = wt, y = mpg), img = p1)
+
+mtcars %>%
+  ggplot() + 
+  geom_image(aes(x = qsec, y = mpg), img = p2, size = 0.1)
+```
+
+
 ## stat_arrowmap()
 
 This function follows the same logic from the above function. They both create new algorithms for certain purposes and make use of the existing geometry objects in `ggplot2`. This function is less general and focuses on a very specific goal that is to create a so called arrow map for the US elections. So it requires the US map information and a data set containing some elements needed to show here.
@@ -101,6 +130,8 @@ So usually before you can directly using this function, you need to organize you
 - `x`: usually longitude
 - `y`: usually latitude
 - `change`: the changes for each state (can be specified by group aesthetics, as one state by default).
+
+### Example
 
 Here we use a made up data set to illustrate the main usage of the function.
 
@@ -131,31 +162,6 @@ madedata %>%
                               length = unit(0.1, "inches")))
 ```
 
-## geom_image()
-
-This function replaces the usual points object in `ggplot2` with provied image. This is different from the previous `stat` related functions, because it create a new geometry object instead of using the existing one. You can treat it like `geom_point` with the points replaced by your image.
-
-Examples are shown below.
-
-```{r , fig.width=5, fig.height=4}
-path1 <- system.file("extdata", "donkey.jpg", package = "ggfun")
-path2 <- system.file("extdata", "elephant.jpg", package = "ggfun")
-p1 <- magick::image_read(path1)
-p2 <- magick::image_read(path2)
-
-mtcars %>%
-  ggplot() + 
-  geom_image(aes(x = wt, y = mpg), img = p1)
-
-mtcars %>%
-  ggplot() + 
-  geom_image(aes(x = qsec, y = mpg), img = p2, size = 0.1)
-```
-
-# Zhenzhen Part
-
-
-# Weiquan Part
 
 ## layer_PersHomo()
 
@@ -168,6 +174,8 @@ The required input are:
 - `x`: longitude in the input dataframe.
 - `y`: latitude in the input dataframe.
 - `d`: the magnitude of real Geo distance (in km) used as the criterion to link two locations.
+
+### Example
 
 The following example show the earthquake data with in Pacific Plate
 
