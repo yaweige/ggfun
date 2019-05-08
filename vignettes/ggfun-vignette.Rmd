@@ -210,3 +210,8 @@ fp <- p + layer_PersHomo(data= eq,mapping = aes(x=LONGITUDE, y=LATITUDE),
   d=450000, colour = "blue") + geom_point(); fp
 ```
 
+## Sources
+
+The development page of 'ggfun' on github https://github.com/yaweige/ggfun
+
+The extension package of 'ggplot2': http://www.ggplot2-exts.org/gallery/
