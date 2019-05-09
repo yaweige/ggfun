@@ -32,8 +32,9 @@ The package `ggfun` extends some of the existing `ggplot2` functionalities by wr
 
 `faceting`:organizing different panels, and designing the layout. In this package, `layer_PersHomo` is using this function.
 
+Here are links to our github [repository](https://github.com/yaweige/ggfun) and [website](https://yaweige.github.io/ggfun)
 
-
+# Functions
 
 ## stat_star
 
@@ -58,6 +59,7 @@ ggplot(madedata2, aes(x = x, y = y)) +
   stat_star()
 ```
 
+From the two plots, we can see there are two distributions of the points to show the function in different settings. Our function correctly connected the central point to the farthest point in both cases. It is very straight forward.
 
 ## stat_rl
 
@@ -105,6 +107,10 @@ From this plot, we can see that once the users input the three basic parameters 
 ## geom_image
 
 This function replaces the usual points object in `ggplot2` with provied image. This is different from the previous `stat` related functions, because it create a new geometry object instead of using the existing one. You can treat it like `geom_point` with the points replaced by your image.
+
+The required parameter besides the usual `geom_point` ones is:
+
+- `img`: the image to show on the plot
 
 ### Example
 
@@ -164,6 +170,8 @@ madedata %>%
                               type = "closed",
                               length = unit(0.1, "inches")))
 ```
+
+You can see there are arrows on the US map for each state with different directions according the sign of the random numbers we generated. The arrow head is closed and filled by yellow color. There are also a lot of other elements about the arrows you can change using the parameters shown in the example.
 
 
 ## layer_PersHomo
