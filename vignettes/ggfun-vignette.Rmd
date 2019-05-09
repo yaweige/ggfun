@@ -32,7 +32,7 @@ The package 'ggfun' extends some of the existing ggplot2 functionalities by wrap
 'faceting':organizing different panels, and designing the layout. In ggfun package, layer_PersHomo is using this function.
 
 
-## stat_star()
+## stat_star
 
 This function is a simple application of `ggplot2` extension functionlity in `stat` function. We provided an algorithm here to calculate the "distance" between points and the central point (defined by median) ginven a data set for scatter plot. And draw a line from the central point to the farthest point. It works with usual `line` geometry objects and applies our algorithm as `stat`.
 
@@ -79,7 +79,7 @@ ggplot(indexf, aes(x = length, y = width, id = sex)) +
 We used 'id' this parameter to separate the dataset based on the levels of the categorical variable. For the plot, we can clearly to see that there are two regression lines for each level. The basic code and rule, we need for this function just following the 'ggplot2' package.
 
 
-## stat_ars()
+## stat_ars
 
 This function applied the mathematical algorithm to calculate the Archimedean Spiral. We built this function that can automatically to calculate the Archimedean Spiral and draw the spiral. It used the 'line' geometry objects and applies the algorithm as 'stat'. 
 
@@ -99,7 +99,7 @@ ggplot() +
 From this plot, we can see once the users input the three basic parameters for Archimedean Spiral, the function will automatically draw a spiral. We can also be based on adjusting these three parameters to see how each index will affect the spiral. For example, once you increase the 'b', the spiral will increase the distance between two curves. 
 
 
-## geom_image()
+## geom_image
 
 This function replaces the usual points object in `ggplot2` with provied image. This is different from the previous `stat` related functions, because it create a new geometry object instead of using the existing one. You can treat it like `geom_point` with the points replaced by your image.
 
@@ -121,7 +121,7 @@ mtcars %>%
 ```
 
 
-## stat_arrowmap()
+## stat_arrowmap
 
 This function follows the same logic from the above function. They both create new algorithms for certain purposes and make use of the existing geometry objects in `ggplot2`. This function is less general and focuses on a very specific goal that is to create a so called arrow map for the US elections. So it requires the US map information and a data set containing some elements needed to show here.
 
@@ -163,7 +163,7 @@ madedata %>%
 ```
 
 
-## layer_PersHomo()
+## layer_PersHomo
 
 Given a points set as Geographic locations in a data.frame, extends ggplot2 functionality to draw a line from location to location with defined criterion of distance in km. The concept is inhered from persist homology. The linkage in resulting figures can be used to recognize patterns or cluster of points.Compare to ggplot2 package, plotly package might be better for this functionality because the linkage can be shown on the globe instead of a flat figure. To the purpose of the package, this layer attempt to show the capability of ggplot on a small scale data instead of global data.
 
@@ -210,8 +210,4 @@ fp <- p + layer_PersHomo(data= eq,mapping = aes(x=LONGITUDE, y=LATITUDE),
   d=450000, colour = "blue") + geom_point(); fp
 ```
 
-## Sources
 
-The development page of 'ggfun' on github https://github.com/yaweige/ggfun
-
-The extension package of 'ggplot2': http://www.ggplot2-exts.org/gallery/
