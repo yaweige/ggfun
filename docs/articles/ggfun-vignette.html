@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vignette Title • ggfun</title>
+<title>ggfun • ggfun</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Vignette Title">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ggfun">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -53,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/ggfun-vignette.html">Vignette Title</a>
+      <a href="../articles/ggfun-vignette.html">ggfun</a>
     </li>
   </ul>
 </li>
@@ -70,10 +70,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Vignette Title</h1>
-                        <h4 class="author">Vignette Author</h4>
+      <h1>ggfun</h1>
+                        <h4 class="author">Yawei Ge, Zhenzhen Chen, Weiquan Luo</h4>
             
-            <h4 class="date">2019-05-03</h4>
+            <h4 class="date">2019-05-09</h4>
       
       
       <div class="hidden name"><code>ggfun-vignette.Rmd</code></div>
@@ -82,212 +82,25 @@
 
     
     
-<p>Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The <code>html_vignette</code> output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The <code>html_vignette</code> format:</p>
-<ul>
-<li>Never uses retina figures</li>
-<li>Has a smaller default figure size</li>
-<li>Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style</li>
-</ul>
-<div id="vignette-info" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vignette-info" class="anchor"></a>Vignette Info</h2>
-<p>Note the various macros within the <code>vignette</code> section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the <code>title</code> field and the <code>\VignetteIndexEntry</code> to match the title of your vignette.</p>
-</div>
-<div id="styles" class="section level2">
-<h2 class="hasAnchor">
-<a href="#styles" class="anchor"></a>Styles</h2>
-<p>The <code>html_vignette</code> template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:</p>
-<pre><code>output: 
-  rmarkdown::html_vignette:
-    css: mystyles.css</code></pre>
-</div>
-<div id="figures" class="section level2">
-<h2 class="hasAnchor">
-<a href="#figures" class="anchor"></a>Figures</h2>
-<p>The figure sizes have been customised so that you can easily put two images side-by-side.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-1-1.png" width="700"><img src="ggfun-vignette_files/figure-html/unnamed-chunk-1-2.png" width="700"></p>
-<p>You can enable figure captions by <code>fig_caption: yes</code> in YAML:</p>
-<pre><code>output:
-  rmarkdown::html_vignette:
-    fig_caption: yes</code></pre>
-<p>Then you can use the chunk option <code>fig.cap = "Your figure caption."</code> in <strong>knitr</strong>.</p>
-</div>
-<div id="more-examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#more-examples" class="anchor"></a>More Examples</h2>
-<p>You can write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>.</p>
-<table class="table">
-<thead><tr class="header">
-<th></th>
-<th align="right">mpg</th>
-<th align="right">cyl</th>
-<th align="right">disp</th>
-<th align="right">hp</th>
-<th align="right">drat</th>
-<th align="right">wt</th>
-<th align="right">qsec</th>
-<th align="right">vs</th>
-<th align="right">am</th>
-<th align="right">gear</th>
-<th align="right">carb</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Mazda RX4</td>
-<td align="right">21.0</td>
-<td align="right">6</td>
-<td align="right">160.0</td>
-<td align="right">110</td>
-<td align="right">3.90</td>
-<td align="right">2.620</td>
-<td align="right">16.46</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td>Mazda RX4 Wag</td>
-<td align="right">21.0</td>
-<td align="right">6</td>
-<td align="right">160.0</td>
-<td align="right">110</td>
-<td align="right">3.90</td>
-<td align="right">2.875</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td>Datsun 710</td>
-<td align="right">22.8</td>
-<td align="right">4</td>
-<td align="right">108.0</td>
-<td align="right">93</td>
-<td align="right">3.85</td>
-<td align="right">2.320</td>
-<td align="right">18.61</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td>Hornet 4 Drive</td>
-<td align="right">21.4</td>
-<td align="right">6</td>
-<td align="right">258.0</td>
-<td align="right">110</td>
-<td align="right">3.08</td>
-<td align="right">3.215</td>
-<td align="right">19.44</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td>Hornet Sportabout</td>
-<td align="right">18.7</td>
-<td align="right">8</td>
-<td align="right">360.0</td>
-<td align="right">175</td>
-<td align="right">3.15</td>
-<td align="right">3.440</td>
-<td align="right">17.02</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td>Valiant</td>
-<td align="right">18.1</td>
-<td align="right">6</td>
-<td align="right">225.0</td>
-<td align="right">105</td>
-<td align="right">2.76</td>
-<td align="right">3.460</td>
-<td align="right">20.22</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td>Duster 360</td>
-<td align="right">14.3</td>
-<td align="right">8</td>
-<td align="right">360.0</td>
-<td align="right">245</td>
-<td align="right">3.21</td>
-<td align="right">3.570</td>
-<td align="right">15.84</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td>Merc 240D</td>
-<td align="right">24.4</td>
-<td align="right">4</td>
-<td align="right">146.7</td>
-<td align="right">62</td>
-<td align="right">3.69</td>
-<td align="right">3.190</td>
-<td align="right">20.00</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td>Merc 230</td>
-<td align="right">22.8</td>
-<td align="right">4</td>
-<td align="right">140.8</td>
-<td align="right">95</td>
-<td align="right">3.92</td>
-<td align="right">3.150</td>
-<td align="right">22.90</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td>Merc 280</td>
-<td align="right">19.2</td>
-<td align="right">6</td>
-<td align="right">167.6</td>
-<td align="right">123</td>
-<td align="right">3.92</td>
-<td align="right">3.440</td>
-<td align="right">18.30</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-</tbody>
-</table>
-<p>Also a quote using <code>&gt;</code>:</p>
-<blockquote>
-<p>“He who gives up [code] safety for [code] speed deserves neither.” (<a href="https://twitter.com/hadleywickham/status/504368538874703872">via</a>)</p>
-</blockquote>
-</div>
-<div id="yawei-part" class="section level1">
+<div id="introdction" class="section level1">
 <h1 class="hasAnchor">
-<a href="#yawei-part" class="anchor"></a>Yawei Part</h1>
+<a href="#introdction" class="anchor"></a>Introdction</h1>
+<p>The package <code>ggfun</code> extends some of the existing <code>ggplot2</code> functionalities by wrapping up some new layer functions and existing methods. It totally including six packages,<code>stat_star</code>, <code>stat_rl</code>, <code>stat_ars</code>, <code>stat_arrowmap</code>, <code>geom_image</code>, and <code>layer_PersHomo</code>. It covers 3 aspects of the statistics field, statistical method, image visualization, mathematical algorithms. The object-oriented system we used is called <code>ggproto</code>, and the four aspects we extend are <code>stat</code>, <code>geom</code>, <code>theme</code>, and <code>faceting</code>.</p>
+<p><code>stat</code>: drawing the plot through some mathmatic algorithms. In <code>ggfun</code> package, <code>stat_ars</code>, <code>stat_star</code>,<code>stat_arrowmap</code>, are using this function.</p>
+<p><code>geom</code>:showing the geometry objects in the plot. In <code>ggfun</code> package, <code>geom_image</code> is using this function.</p>
+<p><code>faceting</code>:organizing different panels, and designing the layout. In this package, <code>layer_PersHomo</code> is using this function.</p>
+<p>Here are links to our github <a href="https://github.com/yaweige/ggfun">repository</a> and <a href="https://yaweige.github.io/ggfun">website</a></p>
+</div>
+<div id="functions" class="section level1">
+<h1 class="hasAnchor">
+<a href="#functions" class="anchor"></a>Functions</h1>
 <div id="stat_star" class="section level2">
 <h2 class="hasAnchor">
-<a href="#stat_star" class="anchor"></a>stat_star()</h2>
+<a href="#stat_star" class="anchor"></a>stat_star</h2>
 <p>This function is a simple application of <code>ggplot2</code> extension functionlity in <code>stat</code> function. We provided an algorithm here to calculate the “distance” between points and the central point (defined by median) ginven a data set for scatter plot. And draw a line from the central point to the farthest point. It works with usual <code>line</code> geometry objects and applies our algorithm as <code>stat</code>.</p>
+<div id="example" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h3>
 <p>The following two examples show the usage in a skewed distribution and a bell-shaped distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">madedata1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>), 
                         <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Fdist">rf</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">df1 =</span> <span class="dv">5</span>, <span class="dt">df2 =</span> <span class="dv">2</span>))
@@ -297,16 +110,92 @@ madedata2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rd
 <span class="kw">ggplot</span>(madedata1, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/stat_star.html">stat_star</a></span>()</code></pre></div>
-<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">ggplot</span>(madedata2, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/stat_star.html">stat_star</a></span>()</code></pre></div>
-<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-3-2.png" width="700"></p>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-1-2.png" width="700"></p>
+<p>From the two plots, we can see there are two distributions of the points to show the function in different settings. Our function correctly connected the central point to the farthest point in both cases. It is very straight forward.</p>
+</div>
+</div>
+<div id="stat_rl" class="section level2">
+<h2 class="hasAnchor">
+<a href="#stat_rl" class="anchor"></a>stat_rl</h2>
+<p>This function is a application of <code>ggplot2</code> used to draw regression linear for each levels of the categorical variables. It does this by providing a new paramter called ‘id’, which can seperate the dataset by the levels of the categorical variable.</p>
+<p>The required aesthetics are:</p>
+<ul>
+<li>
+<code>x</code>: the numerical explanatory variable in the dataset</li>
+<li>
+<code>y</code>: the numerical response variable in the dataset</li>
+<li>
+<code>id</code>: the categroical variable with more than two levels.</li>
+</ul>
+<div id="example-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example-1" class="anchor"></a>Example</h3>
+<p>‘indexf’ is dataset contain two numerical variable (length(cm) and width(cm)), and one categroical variable (sex (two levels: F, M)).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(indexf, <span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span> width, <span class="dt">id =</span> sex)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/stat_rl.html">stat_rl</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span> width, <span class="dt">id =</span> sex, <span class="dt">col =</span> sex))</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p>We used <code>id</code> this parameter to separate the dataset based on the levels of the categorical variable. For the plot, we can clearly to see that there are two regression lines for each level. The basic code and rule, we need for this function just following the <code>ggplot2</code> package.</p>
+</div>
+</div>
+<div id="stat_ars" class="section level2">
+<h2 class="hasAnchor">
+<a href="#stat_ars" class="anchor"></a>stat_ars</h2>
+<p>This function applied the mathematical algorithm to calculate the Archimedean Spiral. We built this function that can automatically to calculate the Archimedean Spiral and draw the spiral. It used the <code>line</code> geometry objects and applies the algorithm as <code>stat</code>.</p>
+<p>The required parameters are:</p>
+<ul>
+<li>
+<code>a</code>: rotating the spiral</li>
+<li>
+<code>b</code>: the distance control between two adjacent curves</li>
+<li>
+<code>n</code>: the number of turns</li>
+</ul>
+<div id="example-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example-2" class="anchor"></a>Example</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/stat_ars.html">stat_ars</a></span>(<span class="kw">aes</span>(<span class="dt">a =</span> <span class="dv">8</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">n =</span> <span class="dv">2</span>), <span class="dt">col =</span> <span class="st">"lightblue"</span>)</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p>From this plot, we can see that once the users input the three basic parameters for Archimedean Spiral, the function will automatically draw a spiral. We can also be based on adjusting these three parameters to see how each index will affect the spiral. For example, once you increase the <code>b</code>, the spiral will increase the distance between two curves.</p>
+</div>
+</div>
+<div id="geom_image" class="section level2">
+<h2 class="hasAnchor">
+<a href="#geom_image" class="anchor"></a>geom_image</h2>
+<p>This function replaces the usual points object in <code>ggplot2</code> with provied image. This is different from the previous <code>stat</code> related functions, because it create a new geometry object instead of using the existing one. You can treat it like <code>geom_point</code> with the points replaced by your image.</p>
+<p>The required parameter besides the usual <code>geom_point</code> ones is:</p>
+<ul>
+<li>
+<code>img</code>: the image to show on the plot</li>
+</ul>
+<div id="example-3" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example-3" class="anchor"></a>Example</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"donkey.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
+path2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"elephant.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
+p1 &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(path1)
+p2 &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(path2)
+
+mtcars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/geom_image.html">geom_image</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg), <span class="dt">img =</span> p1)</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+mtcars <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/geom_image.html">geom_image</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> qsec, <span class="dt">y =</span> mpg), <span class="dt">img =</span> p2, <span class="dt">size =</span> <span class="fl">0.1</span>)</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-4-2.png" width="480"></p>
+</div>
 </div>
 <div id="stat_arrowmap" class="section level2">
 <h2 class="hasAnchor">
-<a href="#stat_arrowmap" class="anchor"></a>stat_arrowmap()</h2>
+<a href="#stat_arrowmap" class="anchor"></a>stat_arrowmap</h2>
 <p>This function follows the same logic from the above function. They both create new algorithms for certain purposes and make use of the existing geometry objects in <code>ggplot2</code>. This function is less general and focuses on a very specific goal that is to create a so called arrow map for the US elections. So it requires the US map information and a data set containing some elements needed to show here.</p>
 <p>So usually before you can directly using this function, you need to organize your data into a required form. The required aesthetics are:</p>
 <ul>
@@ -317,6 +206,9 @@ madedata2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rd
 <li>
 <code>change</code>: the changes for each state (can be specified by group aesthetics, as one state by default).</li>
 </ul>
+<div id="example-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example-4" class="anchor"></a>Example</h3>
 <p>Here we use a made up data set to illustrate the main usage of the function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">usmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"state"</span>)
 madedata &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">region =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(usmap<span class="op">$</span>region), 
@@ -328,7 +220,7 @@ madedata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_path</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="../reference/stat_arrowmap.html">stat_arrowmap</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">change =</span> change, <span class="dt">group =</span> region))</code></pre></div>
-<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-4-1.png" width="480"></p>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-5-1.png" width="480"></p>
 <p>This is not a good picture, however, notice that we can use the parameters in <code>geom_curve</code> here to modify the arrows to make them better since this function use the <code>curve</code> geometry object.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">madedata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
@@ -339,42 +231,61 @@ madedata <span class="op">%&gt;%</span>
                 <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">angle =</span> <span class="dv">25</span>,
                               <span class="dt">type =</span> <span class="st">"closed"</span>,
                               <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>)))</code></pre></div>
-<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-5-1.png" width="480"></p>
-</div>
-<div id="geom_image" class="section level2">
-<h2 class="hasAnchor">
-<a href="#geom_image" class="anchor"></a>geom_image()</h2>
-<p>This function replaces the usual points object in <code>ggplot2</code> with provied image. This is different from the previous <code>stat</code> related functions, because it create a new geometry object instead of using the existing one. You can treat it like <code>geom_point</code> with the points replaced by your image.</p>
-<p>Examples are shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"donkey.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
-path2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"elephant.jpg"</span>, <span class="dt">package =</span> <span class="st">"ggfun"</span>)
-p1 &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(path1)
-p2 &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(path2)
-
-mtcars <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/geom_image.html">geom_image</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg), <span class="dt">img =</span> p1)</code></pre></div>
 <p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-mtcars <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/geom_image.html">geom_image</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> qsec, <span class="dt">y =</span> mpg), <span class="dt">img =</span> p2, <span class="dt">size =</span> <span class="fl">0.1</span>)</code></pre></div>
-<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-6-2.png" width="480"></p>
+<p>You can see there are arrows on the US map for each state with different directions according the sign of the random numbers we generated. The arrow head is closed and filled by yellow color. There are also a lot of other elements about the arrows you can change using the parameters shown in the example.</p>
 </div>
 </div>
-<div id="zhenzhen-part" class="section level1">
-<h1 class="hasAnchor">
-<a href="#zhenzhen-part" class="anchor"></a>Zhenzhen Part</h1>
+<div id="layer_pershomo" class="section level2">
+<h2 class="hasAnchor">
+<a href="#layer_pershomo" class="anchor"></a>layer_PersHomo</h2>
+<p>Given a points set as Geographic locations in a data.frame, extends <code>ggplot2</code> functionality to draw a line from location to location with defined criterion of distance in km. The concept is inhered from persist homology. The linkage in resulting figures can be used to recognize patterns or cluster of points. Compare to <code>ggplot2</code> package, plotly package might be better for this functionality because the linkage can be shown on the globe instead of a flat figure. To the purpose of the package, this layer attempt to show the capability of <code>ggplot2</code> on a small scale data instead of global data.</p>
+<p>The required input are:</p>
+<ul>
+<li>
+<code>data</code>: a dataframe that each row contain longitude, latitude.</li>
+<li>
+<code>x</code>: longitude in the input dataframe.</li>
+<li>
+<code>y</code>: latitude in the input dataframe.</li>
+<li>
+<code>d</code>: the magnitude of real Geo distance (in km) used as the criterion to link two locations.</li>
+</ul>
+<div id="example-5" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example-5" class="anchor"></a>Example</h3>
+<p>The following example show the earthquake data with in Pacific Plate.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
+## plot base map
+worldmap &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">"world2"</span>)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data=</span>worldmap,
+  <span class="kw">aes</span>(<span class="dt">x=</span>long, <span class="dt">y=</span>lat, <span class="dt">group =</span> group),
+  <span class="dt">fill=</span><span class="st">"white"</span>, <span class="dt">colour=</span><span class="st">"#7f7f7f"</span>, <span class="dt">size=</span><span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.line=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.text.x=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.text.y=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.ticks=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.title.x=</span><span class="kw">element_blank</span>(),
+        <span class="dt">axis.title.y=</span><span class="kw">element_blank</span>(),
+        <span class="dt">legend.position=</span><span class="st">"none"</span>,
+        <span class="dt">panel.background=</span><span class="kw">element_blank</span>(),
+        <span class="dt">panel.border=</span><span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.major=</span><span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.minor=</span><span class="kw">element_blank</span>(),
+        <span class="dt">plot.background=</span><span class="kw">element_blank</span>());
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(eqRaw)
+eq &lt;-<span class="st"> </span>eqRaw <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(LONGITUDE <span class="op">&gt;</span><span class="st"> </span><span class="dv">110</span> <span class="op">|</span><span class="st"> </span>LONGITUDE <span class="op">&lt;</span><span class="st"> </span><span class="op">-</span><span class="dv">45</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">LONGITUDE =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ifelse">ifelse</a></span>(LONGITUDE <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, LONGITUDE <span class="op">+</span><span class="st"> </span><span class="dv">360</span>, LONGITUDE))
+## add layer_PersHomo
+fp &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/layer_PersHomo.html">layer_PersHomo</a></span>(<span class="dt">data=</span> eq,<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>LONGITUDE, <span class="dt">y=</span>LATITUDE),
+  <span class="dt">d=</span><span class="dv">450000</span>, <span class="dt">colour =</span> <span class="st">"blue"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(); fp</code></pre></div>
+<p><img src="ggfun-vignette_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p>The world map shows the so-called Ring of fire for the geographical area, where contains 90 percent of the historical earthquake and 81 percent of the greatest earthquake in the world. The red point is the estimated geographical location of the historical earthquake events. By defining the <code>d</code> parameter in km at the <code>layer_PersHomo</code> layer function, the blue lines are added to the map by connecting any two locations that their distance is less than the defined. All the blue lines as a whole show number of clusters of the points. The clusters are the active earthquake zone as well as the transform faults along the boundaries between the Pacific plate and other plates. Different values in <code>d</code> parameter result different in cluster size because of the merge or splits of the cluster. By changing the <code>d</code> parameter, we can understand the geographic major and minor faults.</p>
 </div>
-<div id="weiquan-part" class="section level1">
-<h1 class="hasAnchor">
-<a href="#weiquan-part" class="anchor"></a>Weiquan Part</h1>
 </div>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>A footnote here.<a href="#fnref1">↩</a></p></li>
-</ol>
 </div>
   </div>
 
@@ -383,19 +294,17 @@ mtcars <span class="op">%&gt;%</span>
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#vignette-info">Vignette Info</a></li>
-      <li><a href="#styles">Styles</a></li>
-      <li><a href="#figures">Figures</a></li>
-      <li><a href="#more-examples">More Examples</a></li>
+<li><a href="#introdction">Introdction</a></li>
       <li>
-<a href="#yawei-part">Yawei Part</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#stat_star">stat_star()</a></li>
-      <li><a href="#stat_arrowmap">stat_arrowmap()</a></li>
-      <li><a href="#geom_image">geom_image()</a></li>
+<a href="#functions">Functions</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#stat_star">stat_star</a></li>
+      <li><a href="#stat_rl">stat_rl</a></li>
+      <li><a href="#stat_ars">stat_ars</a></li>
+      <li><a href="#geom_image">geom_image</a></li>
+      <li><a href="#stat_arrowmap">stat_arrowmap</a></li>
+      <li><a href="#layer_pershomo">layer_PersHomo</a></li>
       </ul>
 </li>
-      <li><a href="#zhenzhen-part">Zhenzhen Part</a></li>
-      <li><a href="#weiquan-part">Weiquan Part</a></li>
       </ul>
 </div>
       </div>

@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/ggfun-vignette.html">Vignette Title</a>
+      <a href="articles/ggfun-vignette.html">ggfun</a>
     </li>
   </ul>
 </li>
@@ -79,7 +79,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h1></div>
 <p>This package <code>ggfun</code> was created as an extension of <code>ggplot2</code> to add some functions for some specific goals, such as replacing points with images, making it more convenient to deal with map in some cases, generating some curves with given parameters, etc. But it is really an excercise for applying ggplot2 extension functionalities and there is large space to improve.</p>
-<p>Here is a link to our GitHub <a href="https://github.com/yaweige/ggfun">repository</a> where the code for the package is stored.</p>
+<p>Here are links to our GitHub <a href="https://github.com/yaweige/ggfun">repository</a> where the code for the package is stored and to the package <a href="https://yaweige.github.io/ggfun">website</a> where more information about the package is well shown.</p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
@@ -199,6 +199,16 @@ fp &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </
 <a href="#stat_ars" class="anchor"></a><code>stat_ars</code>
 </h3>
 <p>This function applied the algorithm to calculate the Archimedean spiral. Then we apply <code>ggplot2</code> to connect each point to draw a spiral.</p>
+<p>The required parameters are:</p>
+<ul>
+<li>
+<code>a</code>: rotating the spiral</li>
+<li>
+<code>b</code>: distance control between two adjacent curves</li>
+<li>
+<code>n</code>: the number of turns</li>
+</ul>
+<p>The following example shows how does this function works based on these three parameters.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span>
 <span class="st">   </span><span class="kw"><a href="reference/stat_ars.html">stat_ars</a></span>(<span class="kw">aes</span>(<span class="dt">a =</span> <span class="dv">8</span>, <span class="dt">b =</span> <span class="dv">20</span>, <span class="dt">n =</span> <span class="dv">2</span>), <span class="dt">col =</span> <span class="st">"coral"</span>)</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
@@ -208,6 +218,16 @@ fp &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </
 <a href="#stat_rl" class="anchor"></a><code>stat_rl</code>
 </h3>
 <p>This function is used to draw regression line for the each level of the categorical variable.</p>
+<p>The required aesthetics are:</p>
+<ul>
+<li>
+<code>x</code>: the numerical explanatory variable</li>
+<li>
+<code>y</code>: the numerical response variable</li>
+<li>
+<code>id</code>: the categorical variable with more than one level</li>
+</ul>
+<p>The following example shows two regression line for the given dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(indexf, <span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span> width, <span class="dt">id =</span> sex)) <span class="op">+</span>
 <span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st"> </span><span class="kw"><a href="reference/stat_rl.html">stat_rl</a></span>(<span class="kw">aes</span>(<span class="dt">x =</span> length, <span class="dt">y =</span>  width, <span class="dt">id =</span> sex, <span class="dt">colour =</span> sex))</code></pre></div>
