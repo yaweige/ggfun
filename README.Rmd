@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This package `ggfun` was created as an extension of `ggplot2` to add some functions for some specific goals, such as replacing points with images, making it more convenient to deal with map in some cases, generating some curves with given parameters, etc. But it is really an excercise for applying ggplot2 extension functionalities and there is large space to improve.
 
-Here is a link to our GitHub [repository](https://github.com/yaweige/ggfun) where the code for the package is stored.
+Here are links to our GitHub [repository](https://github.com/yaweige/ggfun) where the code for the package is stored and to the package [website](https://yaweige.github.io/ggfun) where more information about the package is well shown.
 
 # Installation
 
