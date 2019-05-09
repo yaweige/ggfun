@@ -12,6 +12,8 @@ This package `ggfun` was created as an extension of `ggplot2` to add some functi
 
 Here are links to our GitHub [repository](https://github.com/yaweige/ggfun) where the code for the package is stored and to the package [website](https://yaweige.github.io/ggfun) where more information about the package is well shown.
 
+And the shiny app can be found under the`inst/shiny-example` folder or the system file after you installed the package.
+
 Installation
 ============
 
