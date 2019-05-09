@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "ggfun"
+author: "Yawei Ge, Zhenzhen Chen, Weiquan Luo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -20,63 +20,26 @@ library(ggfun)
 library(dplyr)
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
-## Vignette Info
-
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
 
 # Introdction
 
 The package `ggfun` extends some of the existing `ggplot2` functionalities by wrapping up some new layer functions and existing methods. It totally including six packages,`stat_star`, `stat_rl`, `stat_ars`, `stat_arrowmap`, `geom_image`, and `layer_PersHomo`. It covers 3 aspects of the statistics field, statistical method, image visualization, mathematical algorithms. The object-oriented system we used is called `ggproto`, and the four aspects we extend are `stat`, `geom`, `theme`, and `faceting`.
 
+`stat`: drawing the plot through some mathmatic algorithms. In `ggfun` package, `stat_ars`, `stat_star`,`stat_arrowmap`,  are using this function. 
+
+`geom`:showing the geometry objects in the plot. In `ggfun` package, `geom_image` is using this function.
+
+`faceting`:organizing different panels, and designing the layout. In this package, `layer_PersHomo` is using this function.
 
 
-## stat_star()
+
+
+## stat_star
 
 This function is a simple application of `ggplot2` extension functionlity in `stat` function. We provided an algorithm here to calculate the "distance" between points and the central point (defined by median) ginven a data set for scatter plot. And draw a line from the central point to the farthest point. It works with usual `line` geometry objects and applies our algorithm as `stat`.
+
+### Example
 
 The following two examples show the usage in a skewed distribution and a bell-shaped distribution.
 
@@ -95,7 +58,8 @@ ggplot(madedata2, aes(x = x, y = y)) +
   stat_star()
 ```
 
-## stat_arrowmap()
+
+## stat_arrowmap
 
 This function follows the same logic from the above function. They both create new algorithms for certain purposes and make use of the existing geometry objects in `ggplot2`. This function is less general and focuses on a very specific goal that is to create a so called arrow map for the US elections. So it requires the US map information and a data set containing some elements needed to show here.
 
@@ -104,6 +68,8 @@ So usually before you can directly using this function, you need to organize you
 - `x`: usually longitude
 - `y`: usually latitude
 - `change`: the changes for each state (can be specified by group aesthetics, as one state by default).
+
+### Example
 
 Here we use a made up data set to illustrate the main usage of the function.
 
@@ -134,11 +100,12 @@ madedata %>%
                               length = unit(0.1, "inches")))
 ```
 
-## geom_image()
+
+## geom_image
 
 This function replaces the usual points object in `ggplot2` with provied image. This is different from the previous `stat` related functions, because it create a new geometry object instead of using the existing one. You can treat it like `geom_point` with the points replaced by your image.
 
-Examples are shown below.
+### Example
 
 ```{r , fig.width=5, fig.height=4}
 path1 <- system.file("extdata", "donkey.jpg", package = "ggfun")
@@ -154,3 +121,52 @@ mtcars %>%
   ggplot() + 
   geom_image(aes(x = qsec, y = mpg), img = p2, size = 0.1)
 ```
+
+
+## layer_PersHomo
+
+Given a points set as Geographic locations in a data.frame, extends `ggplot2` functionality to draw a line from location to location with defined criterion of distance in km. The concept is inhered from persist homology. The linkage in resulting figures can be used to recognize patterns or cluster of points. Compare to `ggplot2` package, plotly package might be better for this functionality because the linkage can be shown on the globe instead of a flat figure. To the purpose of the package, this layer attempt to show the capability of `ggplot2` on a small scale data instead of global data.
+
+The required input are:
+
+- `data`: a dataframe that each row contain longitude, latitude. 
+- `x`: longitude in the input dataframe.
+- `y`: latitude in the input dataframe.
+- `d`: the magnitude of real Geo distance (in km) used as the criterion to link two locations.
+
+### Example
+
+The following example show the earthquake data with in Pacific Plate.
+
+```{r}
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+## plot base map
+worldmap <- map_data("world2")
+p <- ggplot() +
+  geom_polygon(data=worldmap,
+  aes(x=long, y=lat, group = group),
+  fill="white", colour="#7f7f7f", size=0.5) +
+  theme(axis.line=element_blank(),
+        axis.text.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        legend.position="none",
+        panel.background=element_blank(),
+        panel.border=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        plot.background=element_blank());
+data(eqRaw)
+eq <- eqRaw %>%
+  filter(LONGITUDE > 110 | LONGITUDE < -45) %>%
+  mutate(LONGITUDE = ifelse(LONGITUDE < 0, LONGITUDE + 360, LONGITUDE))
+## add layer_PersHomo
+fp <- p + layer_PersHomo(data= eq,mapping = aes(x=LONGITUDE, y=LATITUDE),
+  d=450000, colour = "blue") + geom_point(); fp
+```
+
+The world map shows the so-called Ring of fire for the geographical area, where contains 90 percent of the historical earthquake and 81 percent of the greatest earthquake in the world. The red point is the estimated geographical location of the historical earthquake events. By defining the `d` parameter in km at the `layer_PersHomo` layer function, the blue lines are added to the map by connecting any two locations that their distance is less than the defined. All the blue lines as a whole show number of clusters of the points. The clusters are the active earthquake zone as well as the transform faults along the boundaries between the Pacific plate and other plates. Different values in `d` parameter result different in cluster size because of the merge or splits of the cluster. By changing the `d` parameter, we can understand the geographic major and minor faults.
