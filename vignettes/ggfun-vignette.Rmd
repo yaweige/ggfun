@@ -93,6 +93,7 @@ The required parameters are:
 - `n`: the number of turns
 
 ### Example
+
 ```{r}
 ggplot() + 
   stat_ars(aes(a = 8, b = 2, n = 2), col = "lightblue")
