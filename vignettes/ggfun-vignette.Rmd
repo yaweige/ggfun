@@ -68,16 +68,9 @@ Also a quote using `>`:
 > "He who gives up [code] safety for [code] speed deserves neither."
 ([via](https://twitter.com/hadleywickham/status/504368538874703872))
 
-#Introdction
+# Introdction
 
-The package 'ggfun' extends some of the existing ggplot2 functionalities by wrapping up some new layer functions and existing methods. It totally including six packages,'stat_star', 'stat_rl', 'stat_ars', 'stat_arrowmap', 'geom_image', and 'layer_PersHomo'. It covers 3 aspects of the statistics field, statistical method, image visualization, mathematical algorithms. The object-oriented system we used is called 'ggproto', and the four aspects we extend are 'stat', 'geom', 'theme', and 'faceting'.
-
-'stat': drawing the plot through some mathmatic algorithms. In ggfun package, stat_ars(), stat_star()£¬stat_arrowmap(),  are using this function. 
-
-'geom':showing the geometry objects in the plot. In ggfun package, geom_image() is using this function.
-
-'faceting':organizing different panels, and designing the layout. In ggfun package, layer_PersHomo is using this function.
-
+The package `ggfun` extends some of the existing `ggplot2` functionalities by wrapping up some new layer functions and existing methods. It totally including six packages,`stat_star`, `stat_rl`, `stat_ars`, `stat_arrowmap`, `geom_image`, and `layer_PersHomo`. It covers 3 aspects of the statistics field, statistical method, image visualization, mathematical algorithms. The object-oriented system we used is called `ggproto`, and the four aspects we extend are `stat`, `geom`, `theme`, and `faceting`.
 
 
 
